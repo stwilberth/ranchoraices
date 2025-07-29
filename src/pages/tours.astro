@@ -1,0 +1,42 @@
+---
+import Layout from '../components/Layout.astro';
+import { languages } from '../i18n.js';
+const lang = 'es';
+const t = languages[lang];
+---
+
+<Layout url={Astro.url}>
+  <section class="py-16 px-4 md:px-0 max-w-4xl mx-auto">
+    <h1 class="font-display text-3xl md:text-5xl text-chocolate mb-6">{t.tours}</h1>
+    <p class="text-lg text-cacao mb-6">Descubre nuestros tours de chocolate artesanal y vive la experiencia completa de la finca Rancho Raíces.</p>
+    <div class="grid gap-8 md:grid-cols-2">
+      <div class="bg-cream rounded-xl shadow p-6 border border-gold">
+        <h2 class="font-display text-2xl text-chocolate mb-2">Tour de Cacao</h2>
+        <ul class="mb-2 text-cacao text-base list-disc list-inside">
+          <li>Duración: 2-2.5 horas</li>
+          <li>Precio: $40 USD por persona</li>
+          <li>Incluye recorrido, degustaciones, actividades prácticas</li>
+        </ul>
+        <a href="/contact" class="inline-block mt-2 px-6 py-2 rounded bg-gold text-cacao font-semibold hover:bg-leaf hover:text-cream transition">Reservar</a>
+      </div>
+      <div class="bg-cream rounded-xl shadow p-6 border border-gold">
+        <h2 class="font-display text-2xl text-chocolate mb-2">Tour de Día Completo</h2>
+        <ul class="mb-2 text-cacao text-base list-disc list-inside">
+          <li>Duración: 6-8 horas</li>
+          <li>Precio: $95 USD por persona</li>
+          <li>Incluye tour de cacao, almuerzo, cascada, cata de vino</li>
+        </ul>
+        <a href="/contact" class="inline-block mt-2 px-6 py-2 rounded bg-gold text-cacao font-semibold hover:bg-leaf hover:text-cream transition">Reservar</a>
+      </div>
+    </div>
+    <div class="mt-10 text-cacao">
+      <h3 class="font-display text-xl text-chocolate mb-2">¿Por qué elegirnos?</h3>
+      <ul class="list-disc list-inside">
+        <li>Experiencia auténtica y rural</li>
+        <li>Guías expertos y trato familiar</li>
+        <li>Enfoque en sostenibilidad y permacultura</li>
+        <li>Ideal para familias, parejas y grupos</li>
+      </ul>
+    </div>
+  </section>
+</Layout>

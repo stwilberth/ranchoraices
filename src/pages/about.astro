@@ -1,0 +1,30 @@
+---
+import Layout from '../components/Layout.astro';
+import { languages } from '../i18n.js';
+const lang = 'es';
+const t = languages[lang];
+---
+
+<Layout url={Astro.url}>
+  <section class="py-16 px-4 md:px-0 max-w-4xl mx-auto">
+    <h1 class="font-display text-3xl md:text-5xl text-chocolate mb-6">{t.about}</h1>
+    <p class="text-lg text-cacao mb-6">
+      Rancho Raíces es una finca familiar ubicada en Puerto Jiménez, Península de Osa, Costa Rica, dedicada al turismo rural sostenible y a la producción artesanal de chocolate orgánico. Gestionada por la familia Berrocal, la finca combina agricultura, educación y cultura para ofrecer una experiencia auténtica y conectada con la naturaleza.
+    </p>
+    <div class="bg-cream rounded-xl shadow p-6 border border-leaf mb-6">
+      <h2 class="font-display text-2xl text-chocolate mb-2">Nuestra Filosofía</h2>
+      <ul class="list-disc list-inside text-cacao text-base">
+        <li>Permacultura y sostenibilidad</li>
+        <li>Producción orgánica y tradicional</li>
+        <li>Impacto positivo en la comunidad</li>
+        <li>Educación y conservación ambiental</li>
+      </ul>
+    </div>
+    <div class="bg-cream rounded-xl shadow p-6 border border-gold">
+      <h2 class="font-display text-2xl text-chocolate mb-2">Nuestra Historia</h2>
+      <p class="text-cacao text-base">
+        Más de 50 años de historia en la región, compartiendo la pasión por el cacao, la naturaleza y la cultura costarricense. ¡Ven y forma parte de nuestra familia!
+      </p>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,34 @@
+---
+import Layout from '../../components/Layout.astro';
+import { languages } from '../../i18n.js';
+const lang = 'en';
+const t = languages[lang];
+---
+
+<Layout url={Astro.url}>
+  <section class="py-16 px-4 md:px-0 max-w-3xl mx-auto">
+    <h1 class="font-display text-3xl md:text-5xl text-chocolate mb-6">{t.contact}</h1>
+    <p class="text-lg text-cacao mb-6">Want to book a tour or have questions? Contact us!</p>
+    <form class="bg-cream rounded-xl shadow p-6 border border-leaf flex flex-col gap-4" name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact" />
+      <label class="text-cacao font-semibold">
+        Name
+        <input name="name" class="block w-full mt-1 p-2 rounded border border-gold focus:border-leaf focus:outline-none" required />
+      </label>
+      <label class="text-cacao font-semibold">
+        Email
+        <input name="email" type="email" class="block w-full mt-1 p-2 rounded border border-gold focus:border-leaf focus:outline-none" required />
+      </label>
+      <label class="text-cacao font-semibold">
+        Message
+        <textarea name="message" class="block w-full mt-1 p-2 rounded border border-gold focus:border-leaf focus:outline-none" rows="4" required></textarea>
+      </label>
+      <button type="submit" class="bg-gold text-cacao font-bold px-6 py-2 rounded hover:bg-leaf hover:text-cream transition mt-2">Send</button>
+    </form>
+    <div class="mt-8 text-cacao">
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/50686328150" class="text-leaf underline">+506 8632 8150</a> / <a href="https://wa.me/50686030464" class="text-leaf underline">+506 8603 0464</a></p>
+      <p><strong>Email:</strong> <a href="mailto:osacacao@gmail.com" class="text-leaf underline">osacacao@gmail.com</a></p>
+      <p><strong>Location:</strong> Puerto Jiménez, Osa Peninsula, Costa Rica</p>
+    </div>
+  </section>
+</Layout>

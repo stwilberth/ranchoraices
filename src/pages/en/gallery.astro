@@ -1,0 +1,19 @@
+---
+import Layout from '../../components/Layout.astro';
+import { languages } from '../../i18n.js';
+const lang = 'en';
+const t = languages[lang];
+---
+
+<Layout url={Astro.url}>
+  <section class="py-16 px-4 md:px-0 max-w-5xl mx-auto">
+    <h1 class="font-display text-3xl md:text-5xl text-chocolate mb-6">{t.gallery}</h1>
+    <p class="text-lg text-cacao mb-8">Coming soon: photo and video gallery of the Rancho Raíces experience. Check back soon to see images from our tours, nature, and chocolate!</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="aspect-[4/3] bg-cream/70 border border-gold rounded-xl flex items-center justify-center text-cacao text-lg">Image 1</div>
+      <div class="aspect-[4/3] bg-cream/70 border border-gold rounded-xl flex items-center justify-center text-cacao text-lg">Image 2</div>
+      <div class="aspect-[4/3] bg-cream/70 border border-gold rounded-xl flex items-center justify-center text-cacao text-lg">Image 3</div>
+      <div class="aspect-[4/3] bg-cream/70 border border-gold rounded-xl flex items-center justify-center text-cacao text-lg">Image 4</div>
+    </div>
+  </section>
+</Layout>

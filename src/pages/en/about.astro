@@ -1,0 +1,30 @@
+---
+import Layout from '../../components/Layout.astro';
+import { languages } from '../../i18n.js';
+const lang = 'en';
+const t = languages[lang];
+---
+
+<Layout url={Astro.url}>
+  <section class="py-16 px-4 md:px-0 max-w-4xl mx-auto">
+    <h1 class="font-display text-3xl md:text-5xl text-chocolate mb-6">{t.about}</h1>
+    <p class="text-lg text-cacao mb-6">
+      Rancho Raíces is a family-run farm in Puerto Jiménez, Osa Peninsula, Costa Rica, dedicated to sustainable rural tourism and the artisanal production of organic chocolate. Managed by the Berrocal family, the farm blends agriculture, education, and culture to offer an authentic experience deeply connected to nature.
+    </p>
+    <div class="bg-cream rounded-xl shadow p-6 border border-leaf mb-6">
+      <h2 class="font-display text-2xl text-chocolate mb-2">Our Philosophy</h2>
+      <ul class="list-disc list-inside text-cacao text-base">
+        <li>Permaculture & sustainability</li>
+        <li>Organic & traditional production</li>
+        <li>Positive community impact</li>
+        <li>Environmental education & conservation</li>
+      </ul>
+    </div>
+    <div class="bg-cream rounded-xl shadow p-6 border border-gold">
+      <h2 class="font-display text-2xl text-chocolate mb-2">Our History</h2>
+      <p class="text-cacao text-base">
+        Over 50 years of history in the region, sharing a passion for cacao, nature, and Costa Rican culture. Come and be part of our family!
+      </p>
+    </div>
+  </section>
+</Layout>
