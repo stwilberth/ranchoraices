@@ -1,23 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    './src/**/*.{astro,js,jsx,ts,tsx,mdx}',
-    './components/**/*.{astro,js,jsx,ts,tsx,mdx}',
-    './pages/**/*.{astro,js,jsx,ts,tsx,mdx}',
+    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
+    './public/**/*.html'
   ],
   theme: {
     extend: {
-      colors: {
-        chocolate: '#7B3F00',
-        cacao: '#3E2723',
-        leaf: '#4CAF50',
-        gold: '#D4AF37',
-        cream: '#FFF8E1',
-      },
+      // Using default Tailwind color palette
       fontFamily: {
-        display: ['"Montserrat"', 'sans-serif'],
-        body: ['"Inter"', 'sans-serif'],
-      },
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif']
+      }
     },
   },
   plugins: [],
