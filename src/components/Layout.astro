@@ -1,5 +1,7 @@
 ---
 import { languages, getLangFromUrl } from '../i18n.js';
+import '../styles/global.css';
+
 const { url = new URL('http://localhost/') } = Astro.props;
 const lang = getLangFromUrl(url);
 const t = languages[lang];
@@ -9,22 +11,45 @@ const t = languages[lang];
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{t.siteName}</title>
-    <meta name="description" content="{t.heroSubtitle}" />
+    <meta name="description" content={t.heroSubtitle} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body class="bg-amber-50 text-gray-900 min-h-screen flex flex-col">
-    <header class="w-full py-4 px-6 flex items-center justify-between bg-amber-900 text-amber-50 shadow-md">
-      <div class="text-2xl font-display tracking-wide">{t.siteName}</div>
-      <nav class="flex gap-6 text-lg">
+    <header class="w-full py-4 px-6 flex items-center justify-between bg-amber-900 text-amber-50 shadow-md relative z-50">
+      <div class="text-2xl font-display tracking-wide">
+        <a href={lang === 'es' ? '/' : '/en/'}>{t.siteName}</a>
+      </div>
+      
+      <!-- Hamburger Menu Button (Mobile) -->
+      <button id="menu-btn" class="md:hidden block text-amber-50 hover:text-amber-400 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex items-center gap-6 text-lg">
         <a href={lang === 'es' ? '/' : '/en/'} class="hover:text-amber-400 transition">{t.home}</a>
         <a href={lang === 'es' ? '/tours' : '/en/tours'} class="hover:text-amber-400 transition">{t.tours}</a>
         <a href={lang === 'es' ? '/about' : '/en/about'} class="hover:text-amber-400 transition">{t.about}</a>
         <a href={lang === 'es' ? '/gallery' : '/en/gallery'} class="hover:text-amber-400 transition">{t.gallery}</a>
         <a href={lang === 'es' ? '/contact' : '/en/contact'} class="hover:text-amber-400 transition">{t.contact}</a>
+        <a href={lang === 'es' ? '/en' : '/'} class="ml-4 px-3 py-1 rounded bg-amber-400 text-amber-900 font-semibold hover:bg-green-600 hover:text-white transition">{t.switchLang}</a>
       </nav>
-      <a href={lang === 'es' ? '/en' : '/'} class="ml-4 px-3 py-1 rounded bg-amber-400 text-amber-900 font-semibold hover:bg-green-600 hover:text-white transition">{t.switchLang}</a>
     </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-amber-800 text-amber-50">
+      <nav class="flex flex-col items-center gap-4 py-6 text-lg">
+        <a href={lang === 'es' ? '/' : '/en/'} class="hover:text-amber-400 transition">{t.home}</a>
+        <a href={lang === 'es' ? '/tours' : '/en/tours'} class="hover:text-amber-400 transition">{t.tours}</a>
+        <a href={lang === 'es' ? '/about' : '/en/about'} class="hover:text-amber-400 transition">{t.about}</a>
+        <a href={lang === 'es' ? '/gallery' : '/en/gallery'} class="hover:text-amber-400 transition">{t.gallery}</a>
+        <a href={lang === 'es' ? '/contact' : '/en/contact'} class="hover:text-amber-400 transition">{t.contact}</a>
+        <a href={lang === 'es' ? '/en' : '/'} class="mt-4 px-4 py-2 rounded bg-amber-400 text-amber-900 font-semibold hover:bg-green-600 hover:text-white transition">{t.switchLang}</a>
+      </nav>
+    </div>
+
     <main class="flex-1 flex flex-col">
       <slot />
     </main>
@@ -34,5 +59,14 @@ const t = languages[lang];
         Puerto Jiménez, Península de Osa, Costa Rica
       </div>
     </footer>
+
+    <script>
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
   </body>
 </html>

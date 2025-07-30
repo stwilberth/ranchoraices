@@ -1,0 +1,12 @@
+# Configuración de despliegue para Netlify
+
+[build]
+  # Comando para construir el sitio. Usamos pnpm porque está en el lockfile.
+  command = "pnpm run build"
+
+  # Directorio que Netlify desplegará. Astro por defecto construye en 'dist'.
+  publish = "dist"
+
+[build.environment]
+  # Especificar una versión de Node.js es una buena práctica para la consistencia.
+  NODE_VERSION = "18"
