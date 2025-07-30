@@ -1,19 +1,25 @@
 ---
 import Layout from '../components/Layout.astro';
+import Gallery from '../components/Gallery.jsx';
 import { languages } from '../i18n.js';
+import fs from 'node:fs';
+
 const lang = 'es';
 const t = languages[lang];
+
+// Leemos las imágenes como antes, pero ahora solo pasamos la lista al componente.
+const imageDir = './public/images/gallery';
+const imageFiles = fs.readdirSync(imageDir).filter(file => 
+  /\.(jpe?g|png|gif)$/i.test(file)
+);
+const images = imageFiles.map(file => `/images/gallery/${file}`);
 ---
 
 <Layout url={Astro.url}>
   <section class="py-16 px-4 md:px-0 max-w-5xl mx-auto">
     <h1 class="font-display text-3xl md:text-5xl text-amber-900 mb-6">{t.gallery}</h1>
-    <p class="text-lg text-gray-800 mb-8">Próximamente: galería de fotos y videos de la experiencia Rancho Raíces. ¡Vuelve pronto para ver imágenes de nuestros tours, naturaleza y chocolate!</p>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="aspect-[4/3] bg-amber-50/70 border border-amber-400 rounded-xl flex items-center justify-center text-amber-900 text-lg">Imagen 1</div>
-      <div class="aspect-[4/3] bg-amber-50/70 border border-amber-400 rounded-xl flex items-center justify-center text-amber-900 text-lg">Imagen 2</div>
-      <div class="aspect-[4/3] bg-amber-50/70 border border-amber-400 rounded-xl flex items-center justify-center text-amber-900 text-lg">Imagen 3</div>
-      <div class="aspect-[4/3] bg-amber-50/70 border border-amber-400 rounded-xl flex items-center justify-center text-amber-900 text-lg">Imagen 4</div>
-    </div>
+    
+    <Gallery client:load images={images} />
+
   </section>
 </Layout>
