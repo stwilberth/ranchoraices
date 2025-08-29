@@ -7,28 +7,63 @@ const t = languages[lang];
 
 <Layout url={Astro.url}>
   <section class="py-16 px-4 md:px-0 max-w-3xl mx-auto">
-    <h1 class="font-display text-3xl md:text-5xl text-chocolate mb-6">{t.contact}</h1>
-    <p class="text-lg text-cacao mb-6">Want to book a tour or have questions? Contact us!</p>
-    <form class="bg-cream rounded-xl shadow p-6 border border-leaf flex flex-col gap-4" name="contact" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="contact" />
-      <label class="text-cacao font-semibold">
-        Name
-        <input name="name" class="block w-full mt-1 p-2 rounded border border-gold focus:border-leaf focus:outline-none" required />
-      </label>
-      <label class="text-cacao font-semibold">
-        Email
-        <input name="email" type="email" class="block w-full mt-1 p-2 rounded border border-gold focus:border-leaf focus:outline-none" required />
-      </label>
-      <label class="text-cacao font-semibold">
-        Message
-        <textarea name="message" class="block w-full mt-1 p-2 rounded border border-gold focus:border-leaf focus:outline-none" rows="4" required></textarea>
-      </label>
-      <button type="submit" class="bg-gold text-cacao font-bold px-6 py-2 rounded hover:bg-leaf hover:text-cream transition mt-2">Send</button>
-    </form>
-    <div class="mt-8 text-cacao">
-      <p><strong>WhatsApp:</strong> <a href="https://wa.me/50686328150" class="text-leaf underline">+506 8632 8150</a> / <a href="https://wa.me/50686030464" class="text-leaf underline">+506 8603 0464</a></p>
-      <p><strong>Email:</strong> <a href="mailto:osacacao@gmail.com" class="text-leaf underline">osacacao@gmail.com</a></p>
-      <p><strong>Location:</strong> Puerto Jiménez, Osa Peninsula, Costa Rica</p>
+    <h1 class="font-display text-3xl md:text-5xl text-amber-900 mb-6">{t.contact}</h1>
+    <p class="text-lg text-gray-800 mb-6">Want to book a tour or have questions? Contact us!</p>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-amber-900 text-amber-50 rounded-xl p-6 shadow-lg">
+        <h2 class="text-2xl font-display mb-4">Direct Contact</h2>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <svg class="w-6 h-6 mt-1 text-amber-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12c0 1.96.64 3.77 1.72 5.23L2 22l4.9-1.61c1.42.75 3.04 1.18 4.77 1.18 5.52 0 10-4.48 10-10S17.52 2 12 2zm5.62 14.49c-.2.57-1.15 1.05-1.88 1.2-.4.08-.93.14-2.7-.5-2.24-.82-3.7-2.86-3.81-2.99-.11-.13-.9-1.2-.9-2.28 0-1.08.58-1.6.79-1.83.21-.23.45-.29.6-.29.15 0 .29 0 .42.01.11.01.28-.04.43.31.15.36.52 1.26.56 1.35.04.09.08.21.02.34-.05.13-.09.2-.18.31-.09.11-.17.24-.25.36-.08.12-.16.25-.07.48.09.23.42.99.9 1.6.62.8 1.14 1.06 1.37 1.18.23.12.36.1.49.06.13-.04.56-.23.7-.44.15-.21.32-.46.39-.56.08-.1.16-.11.26-.1.11.01.69.33 1.28.48.59.15.99.13 1.33.08.34-.05 1.05-.43 1.2-.86.15-.43.15-.8.11-.88-.04-.08-.15-.12-.31-.21z"/>
+            </svg>
+            <div>
+              <h3 class="font-semibold">WhatsApp</h3>
+              <a href="https://wa.me/50686394010" class="text-amber-200 hover:text-white text-lg font-medium block mt-1">+506 8639 4010</a>
+              <p class="text-amber-100 text-sm mt-1">Quick response</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-3 pt-4 border-t border-amber-800">
+            <svg class="w-6 h-6 mt-1 text-amber-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.5l-8 5.3-8-5.3V6h16zM4 18V9.7l8 5.3 8-5.3V18H4z"/>
+            </svg>
+            <div>
+              <h3 class="font-semibold">Email</h3>
+              <a href="mailto:info@ranchoraices.com" class="text-amber-200 hover:text-white text-lg font-medium block mt-1">info@ranchoraices.com</a>
+              <p class="text-amber-100 text-sm mt-1">Response within 24 hours</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-3 pt-4 border-t border-amber-800">
+            <svg class="w-6 h-6 mt-1 text-amber-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <div>
+              <h3 class="font-semibold">Location</h3>
+              <p class="text-amber-100 mt-1">Puerto Jiménez,<br>Osa Peninsula,<br>Costa Rica</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-amber-50 rounded-xl p-6 shadow-lg border border-green-500 flex flex-col gap-6">
+        <h2 class="text-2xl font-display text-amber-900">Opening Hours</h2>
+        <ul class="space-y-3 text-gray-800">
+          <li class="flex justify-between pb-2 border-b border-amber-200">
+            <span>Monday to Friday:</span>
+            <span class="font-medium">8:00 AM - 2:00 PM</span>
+          </li>
+          <li class="flex justify-between pb-2 border-b border-amber-200">
+            <span>Saturdays:</span>
+            <span class="font-medium">8:00 AM - 2:00 PM</span>
+          </li>
+          <li class="flex justify-between">
+            <span>Sundays:</span>
+            <span class="font-medium">Closed</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </Layout>
