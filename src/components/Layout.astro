@@ -15,6 +15,7 @@ const link_class = "hover:text-amber-400 transition";
     <title>{t.siteName}</title>
     <meta name="description" content={t.heroSubtitle} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body class="bg-amber-50 text-gray-900 min-h-screen flex flex-col">
     <header class="w-full py-4 px-6 flex items-center justify-between bg-amber-900 text-amber-50 shadow-md relative sticky top-0 z-50">
@@ -83,21 +84,15 @@ const link_class = "hover:text-amber-400 transition";
           <div>© {new Date().getFullYear()} Rancho Raíces. {lang === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</div>
           <div class="flex flex-col md:flex-row items-center gap-4">
             <div class="flex items-center">
-              <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.5l-8 5.3-8-5.3V6h16zM4 18V9.7l8 5.3 8-5.3V18H4z"/>
-              </svg>
+              <i class="fas fa-envelope mr-2"></i>
               <span>info@ranchoraices.com</span>
             </div>
             <div class="flex items-center">
-              <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
-              </svg>
+              <i class="fas fa-phone mr-2"></i>
               <a href="tel:+50686394010" class="hover:underline">+506 8639 4010</a>
               <span class="mx-2">|</span>
               <a href="https://wa.me/50686394010" target="_blank" rel="noopener noreferrer" class="flex items-center text-green-300 hover:text-green-100">
-                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17.5 14.4l-2.2-2.2c-.2-.2-.5-.2-.7 0l-1.6 1.6c-.5-.3-1.3-.6-1.9-.9-.3-.1-.5-.4-.4-.7.3-.8.5-1.7.5-2.7 0-3.1-2.5-5.6-5.6-5.6-.8 0-1.6.2-2.3.5-.3.1-.5.4-.4.7.3 1 .6 1.8 1 2.5.1.2.1.5 0 .7L3.5 9.9c-.2.2-.2.5 0 .7l2.8 2.8c.2.2.5.2.7 0l1.3-1.3c.2-.2.5-.2.7 0 .9.7 1.9 1.2 3 1.4.3 0 .5.3.4.6-.3 1.1-.8 2.1-1.4 2.9-.1.2-.1.5 0 .7l1.4 1.4c.2.2.5.2.7 0l2.8-2.8c.2-.2.5-.2.7 0l1.3 1.3c.2.2.5.2.7 0l2.8-2.8c.2-.2.2-.5 0-.7l-2.2-2.1z"/>
-                </svg>
+                <i class="fab fa-whatsapp text-2xl mr-2"></i>
                 WhatsApp
               </a>
             </div>
@@ -111,32 +106,24 @@ const link_class = "hover:text-amber-400 transition";
             <a href="https://www.facebook.com/RanchoRaices" target="_blank" rel="noopener noreferrer" 
                class="text-amber-50 hover:text-blue-400 transition-colors" 
                aria-label="Facebook de Rancho Raíces">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.563V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
-              </svg>
+              <i class="fab fa-facebook text-4xl"></i>
             </a>
             <a href="https://www.instagram.com/ranchoraices/" target="_blank" rel="noopener noreferrer" 
                class="text-amber-50 hover:text-pink-500 transition-colors" 
                aria-label="Instagram de Rancho Raíces">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.8l-1.7-1.4-2.7-2.3-2.7 2.3-1.7 1.4-3.2-3.3 1.7-1.4 1.7-1.5-3.2-2.7 1.1-1.3 3.3 2.8V6.5h2.8v4.7l3.3-2.8 1.1 1.3-3.2 2.7 1.7 1.5 1.7 1.4-3.2 3.3z"/>
-              </svg>
+              <i class="fab fa-instagram text-4xl"></i>
             </a>
             <a href="https://www.tripadvisor.es/Attraction_Review-g309284-d3174761-Reviews-Rancho_Raices_De_Puerto_Jimenez-Puerto_Jimenez_Osa_Peninsula_Province_of_Puntaren.html" 
                target="_blank" rel="noopener noreferrer" 
                class="text-amber-50 hover:text-green-500 transition-colors" 
                aria-label="TripAdvisor de Rancho Raíces">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.8l-1.7-1.4-2.7-2.3-2.7 2.3-1.7 1.4-3.2-3.3 1.7-1.4 1.7-1.5-3.2-2.7 1.1-1.3 3.3 2.8V6.5h2.8v4.7l3.3-2.8 1.1 1.3-3.2 2.7 1.7 1.5 1.7 1.4-3.2 3.3z"/>
-              </svg>
+              <svg fill="#ffffff" width="42px" height="42px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>tripadvisor</title> <path d="M23.49 14.862c0 0 0 0 0 0-1.469 0-2.659 1.191-2.659 2.659s1.191 2.659 2.659 2.659c1.469 0 2.659-1.191 2.659-2.659 0-0.49-0.132-0.948-0.363-1.342l0.007 0.013c-0.468-0.8-1.324-1.33-2.303-1.33 0 0 0 0 0 0v0zM8.505 14.862c0 0 0 0 0 0-1.469 0-2.659 1.191-2.659 2.659s1.191 2.659 2.659 2.659c1.469 0 2.659-1.191 2.659-2.659 0-0.49-0.132-0.948-0.363-1.342l0.007 0.013c-0.468-0.8-1.324-1.33-2.303-1.33v0zM23.49 12.45c0.001 0 0.001 0 0.002 0 2.8 0 5.070 2.27 5.070 5.070s-2.27 5.070-5.070 5.070c-2.8 0-5.070-2.27-5.070-5.070 0-0.933 0.252-1.807 0.691-2.558l-0.013 0.024c0.892-1.527 2.523-2.536 4.39-2.537h0zM8.505 12.447c0 0 0 0 0 0 2.801 0 5.072 2.271 5.072 5.072s-2.271 5.072-5.072 5.072c-2.801 0-5.072-2.271-5.072-5.072 0-0.934 0.252-1.809 0.692-2.56l-0.013 0.024c0.893-1.527 2.525-2.536 4.393-2.536v0zM16 8.821c2.032 0.001 3.966 0.416 5.724 1.165l-0.096-0.036c-3.173 1.090-5.447 3.97-5.628 7.405l-0.001 0.020c-0.18-3.455-2.455-6.336-5.57-7.408l-0.058-0.017c1.662-0.712 3.597-1.126 5.628-1.127h0zM16.008 6.372c-0.002 0-0.005 0-0.007 0-3.565 0-6.873 1.099-9.604 2.978l0.057-0.037h-5.45l2.453 2.668c-1.508 1.376-2.45 3.349-2.45 5.542 0 4.138 3.355 7.493 7.493 7.493 1.971 0 3.764-0.761 5.102-2.005l-0.005 0.004 2.402 2.614 2.402-2.612c1.333 1.239 3.126 2 5.097 2 4.139 0 7.494-3.355 7.494-7.494 0-2.193-0.942-4.167-2.444-5.537l-0.006-0.005 2.453-2.668h-5.436c-2.673-1.841-5.98-2.94-9.545-2.94-0.003 0-0.005 0-0.008 0h0z"></path> </g></svg>
             </a>
             <a href="https://maps.app.goo.gl/VsTUBsxhHF4poFcy7" 
                target="_blank" rel="noopener noreferrer" 
                class="text-amber-50 hover:text-red-500 transition-colors" 
                aria-label="Ubicación de Rancho Raíces en Google Maps">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
-              </svg>
+              <i class="fas fa-map-marker-alt text-4xl"></i>
             </a>
           </div>
         </div>
