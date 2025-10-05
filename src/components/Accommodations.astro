@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets';
+import img1 from "../assets/images/hospedajes/villa-casa-sirena/1.jpg";
+import img2 from "../assets/images/hospedajes/villa-casa-sirena/2.jpg";
+import img3 from "../assets/images/hospedajes/villa-casa-sirena/3.jpg";
+import img4 from "../assets/images/hospedajes/villa-casa-sirena/4.jpg";
+import img5 from "../assets/images/hospedajes/villa-casa-sirena/5.jpg";
+import img6 from "../assets/images/hospedajes/villa-casa-sirena/6.jpg";
+import img7 from "../assets/images/hospedajes/villa-casa-sirena/7.jpg";
+import img8 from "../assets/images/hospedajes/villa-casa-sirena/8.jpg";
+import img9 from "../assets/images/hospedajes/villa-casa-sirena/9.jpg";
+import img10 from "../assets/images/hospedajes/villa-casa-sirena/10.jpg";
+import img11 from "../assets/images/hospedajes/villa-casa-sirena/11.jpg";
+
+const accommodations = [
+  {
+    name: "Villa Casa Sirena",
+    location: "Calle Griffin, 61801 Puerto Jiménez, Costa Rica",
+    description: "Casa de 2 dormitorios en Puerto Jiménez. Dispone de wifi gratis, jardín, terraza y bar. Parking privado gratis. Ideal para familias y mascotas.",
+    amenities: ["WiFi gratis", "Parking privado", "Jardín", "Terraza", "Bar", "Cocina", "Lavadora", "Admite mascotas"],
+    images: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11],
+    website: "#", // Placeholder
+    facebook: "#" // Placeholder
+  }
+  // Add more as needed
+];
+---
+
+<section class="py-20 px-4 bg-green-50">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-display text-3xl md:text-4xl text-amber-900 text-center mb-12">Hospedajes Recomendados</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {accommodations.map((acc) => (
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-md mx-auto">
+          <div class="relative">
+            <Image
+              src={acc.images[0]}
+              alt={acc.name}
+              class="w-full h-72 object-cover"
+            />
+            <button
+              id={`prev-${acc.name.replace(/\s+/g, '-')}`}
+              class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
+            >
+              ‹
+            </button>
+            <button
+              id={`next-${acc.name.replace(/\s+/g, '-')}`}
+              class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
+            >
+              ›
+            </button>
+            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+              {acc.images.map((_, i) => (
+                <div
+                  class={`w-2 h-2 rounded-full ${i === 0 ? 'bg-white' : 'bg-gray-400'}`}
+                />
+              ))}
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-2xl text-amber-900 mb-2">{acc.name}</h3>
+            <p class="text-sm text-gray-500 mb-2">{acc.location}</p>
+            <p class="text-gray-700 mb-4">{acc.description}</p>
+            <div class="mb-4">
+              <h4 class="font-semibold text-amber-900 mb-2">Servicios:</h4>
+              <ul class="text-sm text-gray-600 grid grid-cols-2 gap-1">
+                {acc.amenities.map((amenity) => (
+                  <li class="flex items-center">
+                    <span class="text-green-500 mr-1">✓</span> {amenity}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="flex flex-col space-y-2">
+              <a
+                href={acc.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 bg-amber-400 text-amber-900 rounded-lg hover:bg-amber-500 transition text-center"
+              >
+                Visitar Sitio Web
+              </a>
+              <a
+                href={acc.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-center"
+              >
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.accommodation-card');
+    cards.forEach(card => {
+      const accName = card.dataset.name;
+      const images = JSON.parse(card.dataset.images);
+      let currentImage = 0;
+      const imgElement = card.querySelector('img');
+      const prevBtn = card.querySelector('.prev-btn');
+      const nextBtn = card.querySelector('.next-btn');
+      const indicators = card.querySelectorAll('.indicator');
+
+      const updateImage = () => {
+        if (imgElement) imgElement.src = images[currentImage];
+        indicators.forEach((ind, i) => {
+          ind.classList.toggle('bg-white', i === currentImage);
+          ind.classList.toggle('bg-gray-400', i !== currentImage);
+        });
+      };
+
+      if (prevBtn) prevBtn.addEventListener('click', () => {
+        currentImage = (currentImage - 1 + images.length) % images.length;
+        updateImage();
+      });
+
+      if (nextBtn) nextBtn.addEventListener('click', () => {
+        currentImage = (currentImage + 1) % images.length;
+        updateImage();
+      });
+    });
+  });
+</script>
