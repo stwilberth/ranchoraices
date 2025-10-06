@@ -10,6 +10,16 @@ import img9 from "../assets/images/hospedajes/villa-casa-sirena/9.jpg";
 import img10 from "../assets/images/hospedajes/villa-casa-sirena/10.jpg";
 import img11 from "../assets/images/hospedajes/villa-casa-sirena/11.jpg";
 
+// Temporary images for Hidalgo's - replace with actual images
+import hidalgo1 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/1.jpg";
+import hidalgo2 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/2.jpg";
+import hidalgo3 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/3.jpg";
+import hidalgo4 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/4.jpg";
+import hidalgo5 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/5.jpg";
+import hidalgo6 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/6.jpg";
+import hidalgo7 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/7.jpg";
+import hidalgo8 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/8.jpg";
+
 export const accommodations = [
   {
     slug: "villa-casa-sirena",
@@ -73,6 +83,64 @@ export const accommodations = [
       checkOut: "12:00"
     },
     images: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11],
+    website: "#",
+    facebook: "#",
+    languages: ["Español", "English"]
+  },
+  {
+    slug: "cabinas-restaurante-hidalgos",
+    name: "Cabinas & Restaurante Hidalgo's",
+    contact: {
+      phone: "+506 8613-1842",  // Primary phone
+      email: "info@hidalgos.com"  // Placeholder email
+    },
+    location: "Puerto Jiménez, Península de Osa, Costa Rica",
+    description: {
+      es: "Cabinas & Restaurante Hidalgo's ofrece un ambiente familiar y acogedor en el corazón de Puerto Jiménez. Disfruta de cómodas habitaciones, deliciosa comida típica costarricense y la atención personalizada que caracteriza a este lugar. Ideal para quienes buscan descanso, buena comida y una experiencia local auténtica.",
+      en: "Cabinas & Restaurante Hidalgo's offers a family-friendly and cozy atmosphere in the heart of Puerto Jiménez. Enjoy comfortable rooms, delicious typical Costa Rican food, and the personalized attention that characterizes this place. Ideal for those seeking rest, good food, and an authentic local experience."
+    },
+    amenities: {
+      es: [
+        "Restaurante con comida típica",
+        "Cabinas cómodas y limpias",
+        "Parqueo privado gratuito",
+        "WiFi gratis",
+        "Ambientes familiares",
+        "Pet-friendly"
+      ],
+      en: [
+        "Restaurant with typical food",
+        "Comfortable and clean cabins",
+        "Free private parking",
+        "Free WiFi",
+        "Family environments",
+        "Pet-friendly"
+      ]
+    },
+    roomDetails: {
+      type: "Cabinas individuales y familiares",
+      bedrooms: [
+        { name: "Cabina Estándar", beds: "1-2 camas" },
+        { name: "Cabina Familiar", beds: "2-4 camas" }
+      ]
+    },
+    nearbyAttractions: {
+      es: [
+        { name: "Parque Nacional Corcovado", distance: "800 m" },
+        { name: "Playa Puntarenitas", distance: "2 km" },
+        { name: "Aeropuerto de Puerto Jiménez", distance: "1.5 km" }
+      ],
+      en: [
+        { name: "Corcovado National Park", distance: "800 m" },
+        { name: "Puntarenitas Beach", distance: "2 km" },
+        { name: "Puerto Jiménez Airport", distance: "1.5 km" }
+      ]
+    },
+    checkInOut: {
+      checkIn: "14:00",
+      checkOut: "12:00"
+    },
+    images: [hidalgo1, hidalgo2, hidalgo3, hidalgo4, hidalgo5],
     website: "#",
     facebook: "#",
     languages: ["Español", "English"]

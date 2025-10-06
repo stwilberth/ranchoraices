@@ -22,60 +22,122 @@ const accommodations = rawAccommodations.map(acc => ({
   description: acc.description[lang],
   amenities: acc.amenities[lang]
 }));
+
+const getAmenityIcon = (amenity) => {
+  const iconMap = {
+    'WiFi gratis': 'fas fa-wifi',
+    'Free WiFi': 'fas fa-wifi',
+    'Parking privado gratuito': 'fas fa-car',
+    'Free private parking': 'fas fa-car',
+    'Jardín': 'fas fa-leaf',
+    'Garden': 'fas fa-leaf',
+    'Terraza': 'fas fa-home',
+    'Terrace': 'fas fa-home',
+    'Bar': 'fas fa-glass-martini',
+    'Cocina equipada': 'fas fa-utensils',
+    'Fully equipped kitchen': 'fas fa-utensils',
+    'Lavadora': 'fas fa-tshirt',
+    'Washing machine': 'fas fa-tshirt',
+    'Admite mascotas': 'fas fa-paw',
+    'Pet-friendly': 'fas fa-paw',
+    'Habitaciones familiares': 'fas fa-users',
+    'Family rooms': 'fas fa-users',
+    'Prohibido fumar': 'fas fa-smoking-ban',
+    'Non-smoking throughout': 'fas fa-smoking-ban',
+    'Restaurante con comida típica': 'fas fa-utensils',
+    'Restaurant with typical food': 'fas fa-utensils',
+    'Cabinas cómodas y limpias': 'fas fa-bed',
+    'Comfortable and clean cabins': 'fas fa-bed',
+    'Ambientes familiares': 'fas fa-home',
+    'Family environments': 'fas fa-home'
+  };
+  return iconMap[amenity] || 'fas fa-check';
+};
+
+const getTopAmenities = (amenities) => {
+  // Return first 4 amenities for display in cards
+  return amenities.slice(0, 4);
+};
 ---
 
-<section class="py-20 px-4 bg-green-50">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="font-display text-3xl md:text-4xl text-amber-900 text-center mb-12">Hospedajes Recomendados</h2>
+<section class="py-20 px-4 bg-gradient-to-br from-green-50 to-amber-50">
+  <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {accommodations.map((acc) => {
         const detailUrl = lang === 'en' ? `/en/accommodations/${acc.slug}` : `/accommodations/${acc.slug}`;
+        const topAmenities = getTopAmenities(acc.amenities);
         return (
-        <a href={detailUrl} class="block bg-white rounded-lg shadow-lg overflow-hidden max-w-md mx-auto hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
-          <Image
-            src={acc.images[0]}
-            alt={acc.name}
-            class="w-full h-72 object-cover"
-          />
-          <div class="p-6">
-            <h3 class="font-display text-2xl text-amber-900 mb-2">{acc.name}</h3>
-            <p class="text-sm text-gray-500 mb-2">{acc.location}</p>
-            <p class="text-gray-700 mb-4">{acc.description}</p>
-            <div class="mb-4">
-              <h4 class="font-semibold text-amber-900 mb-2">Servicios:</h4>
-              <ul class="text-sm text-gray-600 grid grid-cols-2 gap-1">
-                {acc.amenities.map((amenity) => (
-                  <li class="flex items-center">
-                    <span class="text-green-500 mr-1">✓</span> {amenity}
-                  </li>
-                ))}
-              </ul>
+        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+          <!-- Image Container -->
+          <div class="relative overflow-hidden">
+            <Image
+              src={acc.images[0]}
+              alt={acc.name}
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <a
+                href={detailUrl}
+                class="inline-flex items-center px-4 py-2 bg-white/90 backdrop-blur-sm text-amber-900 rounded-full font-semibold hover:bg-white transition-colors"
+              >
+                {lang === 'es' ? 'Ver detalles' : 'View details'}
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
             </div>
-            <div class="flex flex-col space-y-2">
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            <div class="mb-4">
+              <h3 class="font-display text-2xl text-amber-900 mb-2 group-hover:text-amber-700 transition-colors">{acc.name}</h3>
+              <div class="flex items-center text-gray-600 mb-3">
+                <i class="fas fa-map-marker-alt text-amber-600 mr-2"></i>
+                <span class="text-sm">{acc.location}</span>
+              </div>
+              <p class="text-gray-700 text-sm leading-relaxed line-clamp-3">{acc.description}</p>
+            </div>
+
+            <!-- Top Amenities -->
+            <div class="mb-6">
+              <h4 class="font-semibold text-amber-900 mb-3 text-sm uppercase tracking-wide">
+                {lang === 'es' ? 'Servicios destacados' : 'Featured amenities'}
+              </h4>
+              <div class="grid grid-cols-2 gap-2">
+                {topAmenities.map((amenity) => (
+                  <div class="flex items-center text-gray-600">
+                    <i class={`${getAmenityIcon(amenity)} text-amber-600 text-sm mr-2`}></i>
+                    <span class="text-xs truncate">{amenity}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-3">
               <a
                 href={acc.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="px-4 py-2 bg-amber-400 text-amber-900 rounded-lg hover:bg-amber-500 transition text-center"
+                class="flex-1 group/btn relative flex items-center justify-center px-4 py-3 bg-gradient-to-r from-amber-400 to-amber-300 text-amber-900 rounded-xl hover:from-amber-500 hover:to-amber-400 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
               >
-                Visitar Sitio Web
+                <i class="fas fa-globe text-sm mr-2"></i>
+                <span class="font-semibold text-sm">
+                  {lang === 'es' ? 'Sitio Web' : 'Website'}
+                </span>
               </a>
               <a
                 href={acc.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-center"
+                class="flex-1 group/btn relative flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl hover:from-blue-700 hover:to-blue-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
               >
-                Facebook
+                <i class="fab fa-facebook-f text-sm mr-2"></i>
+                <span class="font-semibold text-sm">Facebook</span>
               </a>
             </div>
-            <div class="px-6 pb-4">
-              <p class="text-amber-600 font-semibold text-center hover:text-amber-700">
-                {lang === 'es' ? 'Ver más detalles →' : 'View more details →'}
-              </p>
-            </div>
           </div>
-        </a>
+        </div>
         );
       })}
     </div>
