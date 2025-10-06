@@ -10,15 +10,7 @@ import img9 from "../assets/images/hospedajes/villa-casa-sirena/9.jpg";
 import img10 from "../assets/images/hospedajes/villa-casa-sirena/10.jpg";
 import img11 from "../assets/images/hospedajes/villa-casa-sirena/11.jpg";
 
-// Temporary images for Hidalgo's - replace with actual images
-import hidalgo1 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/1.jpg";
-import hidalgo2 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/2.jpg";
-import hidalgo3 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/3.jpg";
-import hidalgo4 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/4.jpg";
-import hidalgo5 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/5.jpg";
-import hidalgo6 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/6.jpg";
-import hidalgo7 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/7.jpg";
-import hidalgo8 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/8.jpg";
+// Temporary images for Hidalgo's - using existing images until real photos are added
 
 export const accommodations = [
   {
@@ -140,7 +132,7 @@ export const accommodations = [
       checkIn: "14:00",
       checkOut: "12:00"
     },
-    images: [hidalgo1, hidalgo2, hidalgo3, hidalgo4, hidalgo5],
+    images: [img1, img2, img3, img4, img5], // Temporary - replace with actual Hidalgo's images
     website: "#",
     facebook: "#",
     languages: ["Español", "English"]
