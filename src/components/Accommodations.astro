@@ -1,15 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import img1 from "../assets/images/hospedajes/villa-casa-sirena/1.jpg";
-import img2 from "../assets/images/hospedajes/villa-casa-sirena/2.jpg";
-import img3 from "../assets/images/hospedajes/villa-casa-sirena/3.jpg";
-import img4 from "../assets/images/hospedajes/villa-casa-sirena/4.jpg";
-import img5 from "../assets/images/hospedajes/villa-casa-sirena/5.jpg";
-import img6 from "../assets/images/hospedajes/villa-casa-sirena/6.jpg";
-import img7 from "../assets/images/hospedajes/villa-casa-sirena/7.jpg";
-import img8 from "../assets/images/hospedajes/villa-casa-sirena/8.jpg";
-import img9 from "../assets/images/hospedajes/villa-casa-sirena/9.jpg";
-import img10 from "../assets/images/hospedajes/villa-casa-sirena/10.jpg";
 import { accommodations as rawAccommodations } from '../data/accommodations.js';
 
 export interface Props {
@@ -60,7 +50,7 @@ const getTopAmenities = (amenities) => {
 };
 ---
 
-<section class="py-20 px-4 bg-gradient-to-br from-green-50 to-amber-50">
+<section class="px-4">
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {accommodations.map((acc) => {
@@ -116,24 +106,24 @@ const getTopAmenities = (amenities) => {
             <!-- Action Buttons -->
             <div class="flex gap-3">
               <a
-                href={acc.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex-1 group/btn relative flex items-center justify-center px-4 py-3 bg-gradient-to-r from-amber-400 to-amber-300 text-amber-900 rounded-xl hover:from-amber-500 hover:to-amber-400 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                href={detailUrl}
+                class="flex-1 group/btn relative flex items-center justify-center px-4 py-3 bg-gradient-to-r from-amber-500 to-amber-400 text-white rounded-xl hover:from-amber-600 hover:to-amber-500 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
               >
-                <i class="fas fa-globe text-sm mr-2"></i>
+                <i class="fas fa-eye text-sm mr-2"></i>
                 <span class="font-semibold text-sm">
-                  {lang === 'es' ? 'Sitio Web' : 'Website'}
+                  {lang === 'es' ? 'Ver más' : 'View more'}
                 </span>
               </a>
               <a
-                href={acc.facebook}
+                href={`https://wa.me/${acc.contact?.phone || ''}?text=${encodeURIComponent(lang === 'es' ? 'Hola, me gustaría obtener más información sobre ' : 'Hello, I would like to get more information about ') + acc.name}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex-1 group/btn relative flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl hover:from-blue-700 hover:to-blue-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                class="flex-1 group/btn relative flex items-center justify-center px-4 py-3 bg-gradient-to-r from-green-500 to-green-400 text-white rounded-xl hover:from-green-600 hover:to-green-500 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
               >
-                <i class="fab fa-facebook-f text-sm mr-2"></i>
-                <span class="font-semibold text-sm">Facebook</span>
+                <i class="fab fa-whatsapp text-sm mr-2"></i>
+                <span class="font-semibold text-sm">
+                  {lang === 'es' ? 'WhatsApp' : 'Contact'}
+                </span>
               </a>
             </div>
           </div>
