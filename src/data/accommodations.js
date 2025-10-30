@@ -93,6 +93,7 @@ export const accommodations = [
       checkOut: "12:00"
     },
     images: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.258348424876!2d-83.41513992550514!3d8.571139295989004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa465004ee7a917%3A0x6eb24b76e7c3e895!2sVilla%20Casa%20Sirena!5e0!3m2!1ses!2scr!4v1761789066162!5m2!1ses!2scr",
     website: "#",
     facebook: "#",
     languages: ["Español", "English"]
@@ -151,6 +152,7 @@ export const accommodations = [
       checkOut: "12:00"
     },
     images: [hidalgo1, hidalgo2, hidalgo3, hidalgo4, hidalgo5, hidalgo6, hidalgo7, hidalgo8],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.8332383040797!2d-83.66457332550057!3d9.078952188206078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa3ff51f0ec9a21%3A0x3cacf14c9618b054!2sCabinas%20y%20Restaurante%20Hidalgo's!5e0!3m2!1ses!2scr!4v1761788958068!5m2!1ses!2scr",
     website: "#",
     facebook: "#",
     languages: ["Español", "English"]
