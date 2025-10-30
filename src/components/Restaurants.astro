@@ -1,0 +1,117 @@
+---
+import { Image } from 'astro:assets';
+import { restaurants as rawRestaurants } from '../data/restaurants.js';
+
+export interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props as Props;
+
+const restaurants = rawRestaurants.map(rest => ({
+  ...rest,
+  description: rest.description[lang],
+  services: rest.services[lang],
+  specialties: rest.specialties[lang]
+}));
+
+const getServiceIcon = (service) => {
+  const iconMap = {
+    'Desayuno': 'fas fa-coffee',
+    'Breakfast': 'fas fa-coffee',
+    'Comidas': 'fas fa-utensils',
+    'Lunch': 'fas fa-utensils',
+    'Cenas': 'fas fa-moon',
+    'Dinner': 'fas fa-moon'
+  };
+  return iconMap[service] || 'fas fa-check';
+};
+
+const getTopServices = (services) => {
+  // Return first 4 services for display in cards
+  return services.slice(0, 4);
+};
+---
+
+<section class="px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {restaurants.map((rest) => {
+        const detailUrl = lang === 'en' ? `/en/restaurants/${rest.slug}` : `/restaurants/${rest.slug}`;
+        const topServices = getTopServices(rest.services);
+        return (
+        <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+          <!-- Image Container -->
+          <div class="relative overflow-hidden">
+            <Image
+              src={rest.images[0]}
+              alt={rest.name}
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <a
+                href={detailUrl}
+                class="inline-flex items-center px-4 py-2 bg-white/90 backdrop-blur-sm text-amber-900 rounded-full font-semibold hover:bg-white transition-colors"
+              >
+                {lang === 'es' ? 'Ver detalles' : 'View details'}
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            <div class="mb-4">
+              <h3 class="font-display text-2xl text-amber-900 mb-2 group-hover:text-amber-700 transition-colors">{rest.name}</h3>
+              <div class="flex items-center text-gray-600 mb-3">
+                <i class="fas fa-map-marker-alt text-amber-600 mr-2"></i>
+                <span class="text-sm">{rest.location}</span>
+              </div>
+              <p class="text-gray-700 text-sm leading-relaxed line-clamp-3">{rest.description}</p>
+            </div>
+
+            <!-- Top Services -->
+            <div class="mb-6">
+              <h4 class="font-semibold text-amber-900 mb-3 text-sm uppercase tracking-wide">
+                {lang === 'es' ? 'Servicios' : 'Services'}
+              </h4>
+              <div class="grid grid-cols-2 gap-2">
+                {topServices.map((service) => (
+                  <div class="flex items-center text-gray-600">
+                    <i class={`${getServiceIcon(service)} text-amber-600 text-sm mr-2`}></i>
+                    <span class="text-xs truncate">{service}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-3">
+              <a
+                href={detailUrl}
+                class="flex-1 group/btn relative flex items-center justify-center px-4 py-3 bg-gradient-to-r from-amber-500 to-amber-400 text-white rounded-xl hover:from-amber-600 hover:to-amber-500 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+              >
+                <i class="fas fa-eye text-sm mr-2"></i>
+                <span class="font-semibold text-sm">
+                  {lang === 'es' ? 'Ver más' : 'View more'}
+                </span>
+              </a>
+              <a
+                href={`https://wa.me/${rest.contact?.phone || ''}?text=${encodeURIComponent(lang === 'es' ? 'Hola, me gustaría obtener más información sobre ' : 'Hello, I would like to get more information about ') + rest.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex-1 group/btn relative flex items-center justify-center px-4 py-3 bg-gradient-to-r from-green-500 to-green-400 text-white rounded-xl hover:from-green-600 hover:to-green-500 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+              >
+                <i class="fab fa-whatsapp text-sm mr-2"></i>
+                <span class="font-semibold text-sm">
+                  {lang === 'es' ? 'WhatsApp' : 'Contact'}
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

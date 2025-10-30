@@ -20,6 +20,16 @@ import hidalgo6 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/6
 import hidalgo7 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/7.jpg";
 import hidalgo8 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/8.jpg";
 
+// Images for Cabinas & Restaurante Hidalgo's
+import hidalgo1 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/1.jpg";
+import hidalgo2 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/2.jpg";
+import hidalgo3 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/3.jpg";
+import hidalgo4 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/4.jpg";
+import hidalgo5 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/5.jpg";
+import hidalgo6 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/6.jpg";
+import hidalgo7 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/7.jpg";
+import hidalgo8 from "../assets/images/hospedajes/cabinas-restaurante-hidalgos/8.jpg";
+
 export const accommodations = [
   {
     slug: "villa-casa-sirena",
