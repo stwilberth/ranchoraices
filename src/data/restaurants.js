@@ -62,6 +62,7 @@ export const restaurants = [
       sunday: "7:00 – 20:00"
     },
     images: [causaLimena, costilla, ceviche, hamburguesa, pescaDia, pizza, trufas],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.829993321124!2d-83.66201989999999!3d9.0792475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa3ff87bede8105%3A0x58349528384d5992!2sRestaurante%20Alquimia!5e0!3m2!1ses!2scr!4v1761787669841!5m2!1ses!2scr",
     website: "#",
     facebook: "#",
     languages: ["Español", "English"]
