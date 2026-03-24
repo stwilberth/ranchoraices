@@ -3,7 +3,7 @@ export const languages = {
   es: {
     siteName: 'Rancho Raíces',
     home: 'Inicio',
-    tours: 'Tours de Chocolate',
+    tours: 'Tours',
     restaurants: 'Restaurantes',
     about: 'Sobre Nosotros',
     gallery: 'Galería',
@@ -19,7 +19,7 @@ export const languages = {
   en: {
     siteName: 'Rancho Raíces',
     home: 'Home',
-    tours: 'Chocolate Tours',
+    tours: 'Tours',
     restaurants: 'Restaurants',
     about: 'About Us',
     gallery: 'Gallery',
