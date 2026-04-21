@@ -1,5 +1,7 @@
 ---
 import Layout from '../components/Layout.astro';
+import { Image } from 'astro:assets';
+import josueImage from '../assets/images/josue.webp';
 import { languages } from '../i18n.js';
 
 const lang = 'es';
@@ -62,6 +64,34 @@ const features = [
             <p class="text-gray-600 text-base">{feature.description}</p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Fundraising Section for Josué -->
+  <section class="py-16 px-4 bg-gradient-to-r from-green-700 to-green-600">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-2xl">
+        <div class="mb-6 overflow-hidden rounded-3xl shadow-2xl">
+          <Image
+            src={josueImage}
+            alt="Josué"
+            class="block w-full h-48 object-cover object-top"
+          />
+        </div>
+        <h2 class="font-display text-3xl md:text-4xl text-white mb-3">{t.fundraisingTitle}</h2>
+        <p class="text-xl text-amber-200 mb-4 font-semibold">{t.fundraisingSubtitle}</p>
+        <p class="text-lg text-green-50 mb-8 max-w-2xl mx-auto leading-relaxed">
+          {t.fundraisingDesc}
+        </p>
+        <a href={t.fundraisingLink} target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center px-8 py-4 rounded-full bg-amber-400 text-amber-900 font-bold text-lg shadow-lg hover:bg-amber-300 hover:scale-105 transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          {t.fundraisingButton}
+        </a>
+        <p class="mt-4 text-sm text-green-200">gogetfunding.com/a-prosthetic-leg-for-josue</p>
       </div>
     </div>
   </section>
