@@ -16,13 +16,25 @@ const link_class = "hover:text-amber-400 transition";
     <meta name="description" content={t.heroSubtitle} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5BZ3J954');</script>
+    <!-- End Google Tag Manager -->
   </head>
   <body class="bg-amber-50 text-gray-900 min-h-screen flex flex-col">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BZ3J954"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <header class="w-full py-4 px-6 flex items-center justify-between bg-amber-900 text-amber-50 shadow-md relative sticky top-0 z-50">
       <div class="text-2xl font-display tracking-wide">
         <a href={lang === 'es' ? '/' : '/en/'}>{t.siteName}</a>
       </div>
-      
+
       <button id="menu-btn" class="md:hidden block text-amber-50 hover:text-amber-400 focus:outline-none z-50 transition-transform hover:scale-110" aria-label="Menu">
         <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -102,36 +114,36 @@ const link_class = "hover:text-amber-400 transition";
             </div>
           </div>
         </div>
-        
+
         <!-- Redes Sociales -->
         <div class="mt-6 pt-6 border-t border-amber-800">
           <h3 class="text-lg font-display mb-4 text-center md:text-left">Síguenos en redes sociales</h3>
           <div class="flex justify-center md:justify-start gap-6">
-            <a href="https://www.facebook.com/RanchoRaices" target="_blank" rel="noopener noreferrer" 
-               class="text-amber-50 hover:text-blue-400 transition-colors" 
+            <a href="https://www.facebook.com/RanchoRaices" target="_blank" rel="noopener noreferrer"
+               class="text-amber-50 hover:text-blue-400 transition-colors"
                aria-label="Facebook de Rancho Raíces">
               <i class="fab fa-facebook text-4xl"></i>
             </a>
-            <a href="https://www.instagram.com/ranchoraices/" target="_blank" rel="noopener noreferrer" 
-               class="text-amber-50 hover:text-pink-500 transition-colors" 
+            <a href="https://www.instagram.com/ranchoraices/" target="_blank" rel="noopener noreferrer"
+               class="text-amber-50 hover:text-pink-500 transition-colors"
                aria-label="Instagram de Rancho Raíces">
               <i class="fab fa-instagram text-4xl"></i>
             </a>
-            <a href="https://www.tripadvisor.es/Attraction_Review-g309284-d3174761-Reviews-Rancho_Raices_De_Puerto_Jimenez-Puerto_Jimenez_Osa_Peninsula_Province_of_Puntaren.html" 
-               target="_blank" rel="noopener noreferrer" 
-               class="text-amber-50 hover:text-green-500 transition-colors" 
+            <a href="https://www.tripadvisor.es/Attraction_Review-g309284-d3174761-Reviews-Rancho_Raices_De_Puerto_Jimenez-Puerto_Jimenez_Osa_Peninsula_Province_of_Puntaren.html"
+               target="_blank" rel="noopener noreferrer"
+               class="text-amber-50 hover:text-green-500 transition-colors"
                aria-label="TripAdvisor de Rancho Raíces">
               <svg fill="#ffffff" width="42px" height="42px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>tripadvisor</title> <path d="M23.49 14.862c0 0 0 0 0 0-1.469 0-2.659 1.191-2.659 2.659s1.191 2.659 2.659 2.659c1.469 0 2.659-1.191 2.659-2.659 0-0.49-0.132-0.948-0.363-1.342l0.007 0.013c-0.468-0.8-1.324-1.33-2.303-1.33 0 0 0 0 0 0v0zM8.505 14.862c0 0 0 0 0 0-1.469 0-2.659 1.191-2.659 2.659s1.191 2.659 2.659 2.659c1.469 0 2.659-1.191 2.659-2.659 0-0.49-0.132-0.948-0.363-1.342l0.007 0.013c-0.468-0.8-1.324-1.33-2.303-1.33v0zM23.49 12.45c0.001 0 0.001 0 0.002 0 2.8 0 5.070 2.27 5.070 5.070s-2.27 5.070-5.070 5.070c-2.8 0-5.070-2.27-5.070-5.070 0-0.933 0.252-1.807 0.691-2.558l-0.013 0.024c0.892-1.527 2.523-2.536 4.39-2.537h0zM8.505 12.447c0 0 0 0 0 0 2.801 0 5.072 2.271 5.072 5.072s-2.271 5.072-5.072 5.072c-2.801 0-5.072-2.271-5.072-5.072 0-0.934 0.252-1.809 0.692-2.56l-0.013 0.024c0.893-1.527 2.525-2.536 4.393-2.536v0zM16 8.821c2.032 0.001 3.966 0.416 5.724 1.165l-0.096-0.036c-3.173 1.090-5.447 3.97-5.628 7.405l-0.001 0.020c-0.18-3.455-2.455-6.336-5.57-7.408l-0.058-0.017c1.662-0.712 3.597-1.126 5.628-1.127h0zM16.008 6.372c-0.002 0-0.005 0-0.007 0-3.565 0-6.873 1.099-9.604 2.978l0.057-0.037h-5.45l2.453 2.668c-1.508 1.376-2.45 3.349-2.45 5.542 0 4.138 3.355 7.493 7.493 7.493 1.971 0 3.764-0.761 5.102-2.005l-0.005 0.004 2.402 2.614 2.402-2.612c1.333 1.239 3.126 2 5.097 2 4.139 0 7.494-3.355 7.494-7.494 0-2.193-0.942-4.167-2.444-5.537l-0.006-0.005 2.453-2.668h-5.436c-2.673-1.841-5.98-2.94-9.545-2.94-0.003 0-0.005 0-0.008 0h0z"></path> </g></svg>
             </a>
-            <a href="https://maps.app.goo.gl/VsTUBsxhHF4poFcy7" 
-               target="_blank" rel="noopener noreferrer" 
-               class="text-amber-50 hover:text-red-500 transition-colors" 
+            <a href="https://maps.app.goo.gl/VsTUBsxhHF4poFcy7"
+               target="_blank" rel="noopener noreferrer"
+               class="text-amber-50 hover:text-red-500 transition-colors"
                aria-label="Ubicación de Rancho Raíces en Google Maps">
               <i class="fas fa-map-marker-alt text-4xl"></i>
             </a>
           </div>
         </div>
-        
+
         <div class="mt-6 text-center md:text-left text-sm">
           <p>Puerto Jiménez, Península de Osa, Costa Rica</p>
         </div>
