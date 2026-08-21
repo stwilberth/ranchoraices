@@ -25,3 +25,12 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# Laravel cache / runtime dirs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/views
+/storage/framework/testing
+/bootstrap/cache
+/storage/logs
+
