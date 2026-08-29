@@ -3,18 +3,122 @@ import { languages, getLangFromUrl } from '../i18n.js';
 import '../styles/global.css';
 import ScrollToTop from './ScrollToTop.astro';
 
-const { url = new URL('http://localhost/') } = Astro.props;
+interface Props {
+  url?: URL;
+  title?: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  type?: string;
+  jsonLd?: object[];
+  noindex?: boolean;
+}
+
+const {
+  url = new URL('http://localhost/'),
+  title,
+  description,
+  image = '/og-image.jpg',
+  imageAlt = 'Rancho Raíces: chocolate orgánico en la Península de Osa, Costa Rica',
+  type = 'website',
+  jsonLd = [],
+  noindex = false,
+} = Astro.props as Props;
+
+const SITE = 'https://ranchoraices.com';
 const lang = getLangFromUrl(url);
 const t = languages[lang];
+
+const pageTitle = title || t.siteName;
+const pageDescription = description || t.heroSubtitle;
+const canonicalUrl = new URL(url.pathname, SITE).href;
+const ogImageUrl = image.startsWith('http') ? image : SITE + image;
+
+const path = url.pathname;
+const esPath = path.startsWith('/en') ? (path.slice(3) || '/') : path;
+const enPath = path.startsWith('/en') ? path : '/en' + path;
+const esUrl = new URL(esPath, SITE).href;
+const enUrl = new URL(enPath, SITE).href;
+const xDefaultUrl = esUrl;
+
+const ogLocale = lang === 'en' ? 'en_US' : 'es_CR';
+const ogLocaleAlternate = lang === 'en' ? 'es_CR' : 'en_US';
+
+const organizationLd = {
+  '@type': 'Organization',
+  '@id': `${SITE}/#organization`,
+  name: 'Rancho Raíces',
+  url: `${SITE}/`,
+  logo: `${SITE}/favicon.svg`,
+  image: `${SITE}/og-image.jpg`,
+  email: 'info@ranchoraices.com',
+  telephone: '+506 8639 4010',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Puerto Jiménez',
+    addressRegion: 'Puntarenas',
+    addressCountry: 'CR',
+  },
+  sameAs: [
+    'https://www.facebook.com/RanchoRaices',
+    'https://www.instagram.com/ranchoraices/',
+    'https://www.tripadvisor.es/Attraction_Review-g309284-d3174761-Reviews-Rancho_Raices_De_Puerto_Jimenez-Puerto_Jimenez_Osa_Peninsula_Province_of_Puntaren.html',
+  ],
+};
+
+const websiteLd = {
+  '@type': 'WebSite',
+  '@id': `${SITE}/#website`,
+  url: `${SITE}/`,
+  name: 'Rancho Raíces',
+  publisher: { '@id': `${SITE}/#organization` },
+  inLanguage: lang,
+};
+
+const schemaGraph = [organizationLd, websiteLd, ...jsonLd];
+
 const link_class = "hover:text-amber-400 transition";
 ---
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{t.siteName}</title>
-    <meta name="description" content={t.heroSubtitle} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="theme-color" content="#92400e" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Rancho Raíces" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlternate} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:secure_url" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ranchoraices" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': schemaGraph })}></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Google Tag Manager -->

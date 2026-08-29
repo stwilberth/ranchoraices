@@ -3,9 +3,56 @@ import Layout from '../../components/Layout.astro';
 import { languages } from '../../i18n.js';
 const lang = 'en';
 const t = languages[lang];
+
+const jsonLd = [
+  {
+    '@type': 'ContactPage',
+    '@id': 'https://ranchoraices.com/en/contact#page',
+    name: 'Contact & Bookings | Rancho Raíces',
+    url: 'https://ranchoraices.com/en/contact',
+    about: { '@id': 'https://ranchoraices.com/#organization' },
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': 'https://ranchoraices.com/en/contact#faq',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How can I book a tour?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Message us on WhatsApp at +506 8639 4010 or email info@ranchoraices.com. We reply within 24 hours.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What are the opening hours?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We are open Monday to Saturday from 8:00 AM to 2:00 PM. Closed on Sundays.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Where is Rancho Raíces located?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We are located in Puerto Jiménez, Osa Peninsula, Costa Rica.',
+        },
+      },
+    ],
+  },
+];
 ---
 
-<Layout url={Astro.url}>
+<Layout
+  url={Astro.url}
+  title="Contact & Bookings | Rancho Raíces | Puerto Jiménez, Costa Rica"
+  description="Book your chocolate tour or ask about lodging and restaurants. WhatsApp +506 8639 4010, email info@ranchoraices.com. Hours: Monday to Saturday 8:00-14:00."
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
   <section class="py-16 px-4 md:px-0 max-w-3xl mx-auto">
     <h1 class="font-display text-3xl md:text-5xl text-amber-900 mb-6">{t.contact}</h1>
     <p class="text-lg text-gray-800 mb-6">Want to book a tour or have questions? Contact us!</p>

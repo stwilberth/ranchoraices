@@ -3,9 +3,56 @@ import Layout from '../components/Layout.astro';
 import { languages } from '../i18n.js';
 const lang = 'es';
 const t = languages[lang];
+
+const jsonLd = [
+  {
+    '@type': 'ContactPage',
+    '@id': 'https://ranchoraices.com/contact#page',
+    name: 'Contacto y Reservas | Rancho Raíces',
+    url: 'https://ranchoraices.com/contact',
+    about: { '@id': 'https://ranchoraices.com/#organization' },
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': 'https://ranchoraices.com/contact#faq',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '¿Cómo puedo reservar un tour?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Escríbenos por WhatsApp al +506 8639 4010 o por correo a info@ranchoraices.com. Respondemos en un máximo de 24 horas.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Cuál es el horario de atención?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Atendemos de lunes a sábado de 8:00 AM a 2:00 PM. Los domingos permanecemos cerrados.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Dónde está ubicado Rancho Raíces?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Estamos en Puerto Jiménez, Península de Osa, Costa Rica.',
+        },
+      },
+    ],
+  },
+];
 ---
 
-<Layout url={Astro.url}>
+<Layout
+  url={Astro.url}
+  title="Contacto y Reservas | Rancho Raíces | Puerto Jiménez, Costa Rica"
+  description="Reserva tu tour de chocolate o pregunta por hospedajes y restaurantes. WhatsApp +506 8639 4010, correo info@ranchoraices.com. Horario: lunes a sábado 8:00-14:00."
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
   <section class="py-16 px-4 md:px-0 max-w-3xl mx-auto">
     <h1 class="font-display text-3xl md:text-5xl text-amber-900 mb-6">{t.contact}</h1>
     <p class="text-lg text-gray-800 mb-6">¿Quieres reservar un tour o tienes preguntas? ¡Contáctanos!</p>

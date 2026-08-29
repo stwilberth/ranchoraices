@@ -3,9 +3,99 @@ import Layout from '../components/Layout.astro';
 import { languages } from '../i18n.js';
 const lang = 'es';
 const t = languages[lang];
+
+const toursData = [
+  {
+    name: 'Tour de Cacao',
+    description: 'Del grano a la barra, recorrido por la plantación de cacao, degustaciones y actividades prácticas de elaboración de chocolate orgánico.',
+    duration: 'PT2H30M',
+    price: 45,
+  },
+  {
+    name: 'Tour de Día Completo a Corcovado',
+    description: 'Excursión al Parque Nacional Corcovado con transporte desde Puerto Jiménez a Sirena, guía certificado, almuerzo y entrada al parque.',
+    duration: 'PT8H',
+    price: 95,
+  },
+];
+
+const jsonLd = [
+  {
+    '@type': 'CollectionPage',
+    '@id': 'https://ranchoraices.com/tours#page',
+    name: 'Tours de Chocolate y Cacao en Península de Osa | Rancho Raíces',
+    url: 'https://ranchoraices.com/tours',
+    isPartOf: { '@id': 'https://ranchoraices.com/#website' },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: toursData.map((tour, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'Tour',
+          name: tour.name,
+          description: tour.description,
+          provider: { '@id': 'https://ranchoraices.com/#organization' },
+          duration: tour.duration,
+          offers: {
+            '@type': 'Offer',
+            price: tour.price,
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+          },
+        },
+      })),
+    },
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': 'https://ranchoraices.com/tours#faq',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '¿Cuánto cuesta el tour de cacao?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'El Tour de Cacao cuesta $45 USD por persona e incluye recorrido por la finca, degustaciones y actividades prácticas.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Cuánto dura el tour de cacao?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'El Tour de Cacao dura aproximadamente 2 a 2.5 horas.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Qué incluye el tour de día completo a Corcovado?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Incluye entrada al Parque Nacional Corcovado, transporte de Puerto Jiménez a Sirena, guía certificado y almuerzo. Dura de 6 a 8 horas y cuesta $95 USD por persona.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Cómo puedo reservar un tour?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Puedes reservar contactándonos por WhatsApp al +506 8639 4010 o escribiéndonos a info@ranchoraices.com.',
+        },
+      },
+    ],
+  },
+];
 ---
 
-<Layout url={Astro.url}>
+<Layout
+  url={Astro.url}
+  title="Tours de Chocolate y Cacao en Península de Osa | Rancho Raíces"
+  description="Tour de cacao artesanal de 2-2.5 h por $45 USD y tour de día completo a Corcovado por $95 USD con guía certificado. Turismo rural y sostenible en Puerto Jiménez, Costa Rica."
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
   <section class="py-16 px-4 md:px-0 max-w-4xl mx-auto">
     <h1 class="font-display text-3xl md:text-5xl text-amber-900 mb-6">{t.tours}</h1>
     <p class="text-lg text-gray-800 mb-6">Descubre nuestros tours de chocolate artesanal y vive la experiencia completa de la finca Rancho Raíces.</p>
@@ -40,6 +130,28 @@ const t = languages[lang];
         <li>Enfoque en sostenibilidad y permacultura</li>
         <li>Ideal para familias, parejas y grupos</li>
       </ul>
+    </div>
+
+    <div class="mt-12">
+      <h2 class="font-display text-3xl text-amber-900 mb-6">Preguntas Frecuentes</h2>
+      <div class="space-y-4">
+        <div class="bg-amber-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-amber-900 mb-2">¿Cuánto cuesta el tour de cacao?</h3>
+          <p class="text-gray-700">El Tour de Cacao cuesta $45 USD por persona e incluye recorrido por la finca, degustaciones y actividades prácticas.</p>
+        </div>
+        <div class="bg-amber-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-amber-900 mb-2">¿Cuánto dura el tour de cacao?</h3>
+          <p class="text-gray-700">El Tour de Cacao dura aproximadamente 2 a 2.5 horas.</p>
+        </div>
+        <div class="bg-amber-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-amber-900 mb-2">¿Qué incluye el tour de día completo a Corcovado?</h3>
+          <p class="text-gray-700">Incluye entrada al Parque Nacional Corcovado, transporte de Puerto Jiménez a Sirena, guía certificado y almuerzo. Dura de 6 a 8 horas y cuesta $95 USD por persona.</p>
+        </div>
+        <div class="bg-amber-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-amber-900 mb-2">¿Cómo puedo reservar un tour?</h3>
+          <p class="text-gray-700">Puedes reservar contactándonos por WhatsApp al +506 8639 4010 o escribiéndonos a info@ranchoraices.com.</p>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>

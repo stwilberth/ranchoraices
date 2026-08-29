@@ -29,6 +29,45 @@ if (!restaurant) {
   throw new Error(`Restaurant with slug "${slug}" not found`);
 }
 
+const pageUrl = `https://ranchoraices.com/en/restaurants/${restaurant.slug}`;
+
+const jsonLd = [
+  {
+    '@type': 'Restaurant',
+    '@id': `${pageUrl}#restaurant`,
+    name: restaurant.name,
+    url: pageUrl,
+    description: restaurant.description,
+    image: 'https://ranchoraices.com/og-image.jpg',
+    telephone: restaurant.contact?.phone?.replace(/\s/g, ''),
+    email: restaurant.contact?.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: restaurant.location,
+      addressCountry: 'CR',
+    },
+    servesCuisine: restaurant.specialties,
+    priceRange: '$$',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        opens: restaurant.hours.monday?.split('–')[0]?.trim() || '07:00',
+        closes: restaurant.hours.monday?.split('–')[1]?.trim() || '20:00',
+      },
+    ],
+    parentOrganization: { '@id': 'https://ranchoraices.com/#organization' },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ranchoraices.com/en/' },
+      { '@type': 'ListItem', position: 2, name: 'Restaurants', item: 'https://ranchoraices.com/en/restaurants' },
+      { '@type': 'ListItem', position: 3, name: restaurant.name, item: pageUrl },
+    ],
+  },
+];
+
 const getServiceIcon = (service) => {
   const iconMap = {
     'Breakfast': 'fas fa-coffee',
@@ -39,7 +78,14 @@ const getServiceIcon = (service) => {
 };
 ---
 
-<Layout url={Astro.url}>
+<Layout
+  url={Astro.url}
+  title={`${restaurant.name} | Restaurants in the Osa Peninsula | Rancho Raíces`}
+  description={restaurant.description}
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
   <section class="py-16 px-4 md:px-0 max-w-6xl mx-auto space-y-12">
     <!-- Hero Section -->
     <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 md:p-12 shadow-lg">

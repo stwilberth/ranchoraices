@@ -28,6 +28,41 @@ if (!accommodation) {
   throw new Error(`Accommodation with slug "${slug}" not found`);
 }
 
+const pageUrl = `https://ranchoraices.com/accommodations/${accommodation.slug}`;
+
+const jsonLd = [
+  {
+    '@type': 'LodgingBusiness',
+    '@id': `${pageUrl}#lodging`,
+    name: accommodation.name,
+    url: pageUrl,
+    description: accommodation.description,
+    image: accommodation.images[0].src,
+    telephone: accommodation.contact?.phone?.replace(/\s/g, ''),
+    email: accommodation.contact?.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: accommodation.location,
+      addressCountry: 'CR',
+    },
+    checkinTime: accommodation.checkInOut.checkIn,
+    checkoutTime: accommodation.checkInOut.checkOut,
+    amenityFeature: accommodation.amenities.slice(0, 8).map(a => ({
+      '@type': 'LocationFeatureSpecification',
+      name: a,
+    })),
+    parentOrganization: { '@id': 'https://ranchoraices.com/#organization' },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://ranchoraices.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Hospedajes', item: 'https://ranchoraices.com/accommodations' },
+      { '@type': 'ListItem', position: 3, name: accommodation.name, item: pageUrl },
+    ],
+  },
+];
+
 const getAmenityIcon = (amenity) => {
   const iconMap = {
     'WiFi gratis': 'fas fa-wifi',
@@ -48,7 +83,14 @@ const getAmenityIcon = (amenity) => {
 };
 ---
 
-<Layout url={Astro.url}>
+<Layout
+  url={Astro.url}
+  title={`${accommodation.name} | Hospedajes en Puerto Jiménez | Rancho Raíces`}
+  description={accommodation.description}
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
   <section class="py-16 px-4 md:px-0 max-w-6xl mx-auto space-y-12">
     <!-- Hero Section -->
     <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 md:p-12 shadow-lg">

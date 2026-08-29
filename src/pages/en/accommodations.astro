@@ -2,11 +2,47 @@
 import Layout from '../../components/Layout.astro';
 import Accommodations from '../../components/Accommodations.astro';
 import { languages } from '../../i18n.js';
+import { accommodations as rawAccommodations } from '../../data/accommodations.js';
 const lang = 'en';
 const t = languages[lang];
+
+const jsonLd = [
+  {
+    '@type': 'CollectionPage',
+    '@id': 'https://ranchoraices.com/en/accommodations#page',
+    name: 'Accommodation in Puerto Jiménez and Osa Peninsula | Rancho Raíces',
+    url: 'https://ranchoraices.com/en/accommodations',
+    isPartOf: { '@id': 'https://ranchoraices.com/#website' },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: rawAccommodations.map((acc, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'LodgingBusiness',
+          name: acc.name,
+          url: `https://ranchoraices.com/en/accommodations/${acc.slug}`,
+          description: acc.description[lang],
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: acc.location,
+            addressCountry: 'CR',
+          },
+        },
+      })),
+    },
+  },
+];
 ---
 
-<Layout url={Astro.url}>
+<Layout
+  url={Astro.url}
+  title="Accommodation in Puerto Jiménez and Osa Peninsula | Rancho Raíces"
+  description="Recommended lodging near Rancho Raíces: villas and cabins with free WiFi, garden, equipped kitchen and proximity to Corcovado National Park, Osa Peninsula, Costa Rica."
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
   <section class="py-16 px-4 md:px-0 max-w-6xl mx-auto">
     <h1 class="font-display text-3xl md:text-5xl text-amber-900 mb-6 text-center">{t.accommodations}</h1>
     <p class="text-lg text-gray-800 mb-12 text-center max-w-3xl mx-auto">

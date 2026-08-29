@@ -11,9 +11,38 @@ const imageFiles = fs.readdirSync(imageDir).filter(file =>
   /\.(jpe?g|png|gif)$/i.test(file)
 );
 const images = imageFiles.map(file => `/images/gallery/${file}`);
+
+const jsonLd = [
+  {
+    '@type': 'CollectionPage',
+    '@id': 'https://ranchoraices.com/en/gallery#page',
+    name: 'Photo Gallery | Rancho Raíces',
+    url: 'https://ranchoraices.com/en/gallery',
+    isPartOf: { '@id': 'https://ranchoraices.com/#website' },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: images.map((src, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'ImageObject',
+          contentUrl: `https://ranchoraices.com${src}`,
+          representativeOfPage: false,
+        },
+      })),
+    },
+  },
+];
 ---
 
-<Layout url={Astro.url}>
+<Layout
+  url={Astro.url}
+  title="Photo Gallery | Rancho Raíces | Osa Peninsula"
+  description="Photos of the farm, cacao, tropical wildlife, tours and artisanal chocolate at Rancho Raíces in Puerto Jiménez, Osa Peninsula, Costa Rica."
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
   <section class="py-16 px-4 md:px-0 max-w-5xl mx-auto">
     <h1 class="font-display text-3xl md:text-5xl text-amber-900 mb-6">{t.gallery}</h1>
     

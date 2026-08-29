@@ -2,11 +2,47 @@
 import Layout from '../components/Layout.astro';
 import Restaurants from '../components/Restaurants.astro';
 import { languages } from '../i18n.js';
+import { restaurants as rawRestaurants } from '../data/restaurants.js';
 const lang = 'es';
 const t = languages[lang];
+
+const jsonLd = [
+  {
+    '@type': 'CollectionPage',
+    '@id': 'https://ranchoraices.com/restaurants#page',
+    name: 'Restaurantes recomendados en la Península de Osa | Rancho Raíces',
+    url: 'https://ranchoraices.com/restaurants',
+    isPartOf: { '@id': 'https://ranchoraices.com/#website' },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: rawRestaurants.map((rest, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'Restaurant',
+          name: rest.name,
+          url: `https://ranchoraices.com/restaurants/${rest.slug}`,
+          description: rest.description[lang],
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: rest.location,
+            addressCountry: 'CR',
+          },
+        },
+      })),
+    },
+  },
+];
 ---
 
-<Layout url={Astro.url}>
+<Layout
+  url={Astro.url}
+  title="Restaurantes Recomendados en Península de Osa | Rancho Raíces"
+  description="Restaurantes recomendados cerca de Rancho Raíces: comida típica costarricense, mariscos, ceviches y experiencias culinarias únicas en la Península de Osa, Costa Rica."
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
   <section class="py-16 px-4 md:px-0 max-w-6xl mx-auto">
     <h1 class="font-display text-3xl md:text-5xl text-amber-900 mb-6 text-center">{t.restaurants}</h1>
     <p class="text-lg text-gray-800 mb-12 text-center max-w-3xl mx-auto">

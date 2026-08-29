@@ -7,6 +7,39 @@ import { languages } from '../i18n.js';
 const lang = 'es';
 const t = languages[lang];
 
+const jsonLd = [
+  {
+    '@type': ['TouristAttraction', 'LocalBusiness'],
+    '@id': 'https://ranchoraices.com/#attraction',
+    name: 'Rancho Raíces',
+    description: 'Finca familiar en Puerto Jiménez, Península de Osa, Costa Rica, dedicada al turismo rural sostenible y a la producción artesanal de chocolate orgánico.',
+    url: 'https://ranchoraices.com/',
+    image: 'https://ranchoraices.com/og-image.jpg',
+    telephone: '+506 8639 4010',
+    email: 'info@ranchoraices.com',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Puerto Jiménez',
+      addressRegion: 'Puntarenas',
+      addressCountry: 'CR',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 8.54,
+      longitude: -83.3,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '08:00',
+        closes: '14:00',
+      },
+    ],
+    parentOrganization: { '@id': 'https://ranchoraices.com/#organization' },
+  },
+];
+
 const features = [
   {
     title: 'Tours de Cacao y Chocolate',
@@ -30,7 +63,15 @@ const features = [
   }
 ];
 ---
-<Layout url={Astro.url}>
+<Layout
+  url={Astro.url}
+  title="Rancho Raíces | Tours de Chocolate Orgánico en Península de Osa, Costa Rica"
+  description="Tour de cacao orgánico en Puerto Jiménez, Península de Osa, Costa Rica. Del grano a la barra: chocolate artesanal, permacultura, fauna tropical, almuerzo típico y catas. ¡Reserva tu tour!"
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
+
   <section
     class="relative flex flex-col items-center justify-center min-h-screen text-center bg-cover bg-center -mt-20 pt-16"
     style="background-image: url('/images/gallery/56.jpg');"

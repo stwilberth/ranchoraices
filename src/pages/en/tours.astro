@@ -3,9 +3,99 @@ import Layout from '../../components/Layout.astro';
 import { languages } from '../../i18n.js';
 const lang = 'en';
 const t = languages[lang];
+
+const toursData = [
+  {
+    name: 'Cacao Tour',
+    description: 'From bean to bar, walk through the cacao farm, tastings and hands-on organic chocolate making activities.',
+    duration: 'PT2H30M',
+    price: 45,
+  },
+  {
+    name: 'Full Day Tour to Corcovado',
+    description: 'Excursion to Corcovado National Park with transportation from Puerto Jiménez to Sirena, certified guide, lunch and park entrance.',
+    duration: 'PT8H',
+    price: 95,
+  },
+];
+
+const jsonLd = [
+  {
+    '@type': 'CollectionPage',
+    '@id': 'https://ranchoraices.com/en/tours#page',
+    name: 'Chocolate and Cacao Tours in Osa Peninsula | Rancho Raíces',
+    url: 'https://ranchoraices.com/en/tours',
+    isPartOf: { '@id': 'https://ranchoraices.com/#website' },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: toursData.map((tour, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'Tour',
+          name: tour.name,
+          description: tour.description,
+          provider: { '@id': 'https://ranchoraices.com/#organization' },
+          duration: tour.duration,
+          offers: {
+            '@type': 'Offer',
+            price: tour.price,
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+          },
+        },
+      })),
+    },
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': 'https://ranchoraices.com/en/tours#faq',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How much does the cacao tour cost?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The Cacao Tour costs $45 USD per person and includes a farm walk, tastings and hands-on activities.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How long does the cacao tour last?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The Cacao Tour lasts approximately 2 to 2.5 hours.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What does the full day tour to Corcovado include?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'It includes Corcovado National Park entrance, transportation from Puerto Jiménez to Sirena, certified guide and lunch. It lasts 6 to 8 hours and costs $95 USD per person.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How can I book a tour?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'You can book by contacting us on WhatsApp at +506 8639 4010 or emailing info@ranchoraices.com.',
+        },
+      },
+    ],
+  },
+];
 ---
 
-<Layout url={Astro.url}>
+<Layout
+  url={Astro.url}
+  title="Chocolate and Cacao Tours in Osa Peninsula | Rancho Raíces"
+  description="Artisanal cacao tour (2-2.5 h, $45 USD) and full day Corcovado tour ($95 USD) with certified guide. Sustainable rural tourism in Puerto Jiménez, Costa Rica."
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
   <section class="py-16 px-4 md:px-0 max-w-4xl mx-auto">
     <h1 class="font-display text-3xl md:text-5xl text-amber-900 mb-6">{t.tours}</h1>
     <p class="text-lg text-gray-800 mb-6">Discover our artisanal chocolate tours and enjoy the full Rancho Raíces farm experience.</p>
@@ -40,6 +130,28 @@ const t = languages[lang];
         <li>Focus on sustainability and permaculture</li>
         <li>Perfect for families, couples, and groups</li>
       </ul>
+    </div>
+
+    <div class="mt-12">
+      <h2 class="font-display text-3xl text-amber-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-amber-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-amber-900 mb-2">How much does the cacao tour cost?</h3>
+          <p class="text-gray-700">The Cacao Tour costs $45 USD per person and includes a farm walk, tastings and hands-on activities.</p>
+        </div>
+        <div class="bg-amber-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-amber-900 mb-2">How long does the cacao tour last?</h3>
+          <p class="text-gray-700">The Cacao Tour lasts approximately 2 to 2.5 hours.</p>
+        </div>
+        <div class="bg-amber-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-amber-900 mb-2">What does the full day tour to Corcovado include?</h3>
+          <p class="text-gray-700">It includes Corcovado National Park entrance, transportation from Puerto Jiménez to Sirena, certified guide and lunch. It lasts 6 to 8 hours and costs $95 USD per person.</p>
+        </div>
+        <div class="bg-amber-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-amber-900 mb-2">How can I book a tour?</h3>
+          <p class="text-gray-700">You can book by contacting us on WhatsApp at +506 8639 4010 or emailing info@ranchoraices.com.</p>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>

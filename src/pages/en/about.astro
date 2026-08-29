@@ -3,9 +3,26 @@ import Layout from '../../components/Layout.astro';
 import { languages } from '../../i18n.js';
 const lang = 'en';
 const t = languages[lang];
+
+const jsonLd = [
+  {
+    '@type': 'AboutPage',
+    '@id': 'https://ranchoraices.com/en/about#page',
+    name: 'About Us | Rancho Raíces',
+    url: 'https://ranchoraices.com/en/about',
+    about: { '@id': 'https://ranchoraices.com/#organization' },
+  },
+];
 ---
 
-<Layout url={Astro.url}>
+<Layout
+  url={Astro.url}
+  title="About Us | Organic Chocolate Family Farm | Rancho Raíces"
+  description="Rancho Raíces is a family-run farm in Puerto Jiménez, Osa Peninsula, dedicated to sustainable rural tourism and organic chocolate. Over 50 years of history."
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
   <section class="py-16 px-4 md:px-0 max-w-4xl mx-auto">
     <h1 class="font-display text-3xl md:text-5xl text-amber-900 mb-6">{t.about}</h1>
     <p class="text-lg text-gray-800 mb-6">
