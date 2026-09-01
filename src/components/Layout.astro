@@ -152,6 +152,7 @@ const link_class = "hover:text-amber-400 transition";
       <nav class="hidden md:flex items-center gap-6 text-lg">
         <a href={lang === 'es' ? '/' : '/en/'} class={link_class}>{t.home}</a>
         <a href={lang === 'es' ? '/tours' : '/en/tours'} class={link_class}>{t.tours}</a>
+        <a href={lang === 'es' ? '/transporte-privado' : '/en/private-transportation'} class={link_class}>{t.transport}</a>
         <a href={lang === 'es' ? '/restaurants' : '/en/restaurants'} class={link_class}>{t.restaurants}</a>
         <a href={lang === 'es' ? '/about' : '/en/about'} class={link_class}>{t.about}</a>
         <a href={lang === 'es' ? '/gallery' : '/en/gallery'} class={link_class}>{t.gallery}</a>
@@ -175,6 +176,7 @@ const link_class = "hover:text-amber-400 transition";
           <nav class="flex flex-col items-center space-y-6 w-full max-w-xs">
             <a href={lang === 'es' ? '/' : '/en/'} class="text-2xl text-amber-50 hover:text-amber-300 transition-colors py-3 w-full text-center border-b border-amber-800">{t.home}</a>
             <a href={lang === 'es' ? '/tours' : '/en/tours'} class="text-2xl text-amber-50 hover:text-amber-300 transition-colors py-3 w-full text-center border-b border-amber-800">{t.tours}</a>
+            <a href={lang === 'es' ? '/transporte-privado' : '/en/private-transportation'} class="text-2xl text-amber-50 hover:text-amber-300 transition-colors py-3 w-full text-center border-b border-amber-800">{t.transport}</a>
             <a href={lang === 'es' ? '/restaurants' : '/en/restaurants'} class="text-2xl text-amber-50 hover:text-amber-300 transition-colors py-3 w-full text-center border-b border-amber-800">{t.restaurants}</a>
             <a href={lang === 'es' ? '/about' : '/en/about'} class="text-2xl text-amber-50 hover:text-amber-300 transition-colors py-3 w-full text-center border-b border-amber-800">{t.about}</a>
             <a href={lang === 'es' ? '/gallery' : '/en/gallery'} class="text-2xl text-amber-50 hover:text-amber-300 transition-colors py-3 w-full text-center border-b border-amber-800">{t.gallery}</a>
@@ -248,7 +250,14 @@ const link_class = "hover:text-amber-400 transition";
           </div>
         </div>
 
-        <div class="mt-6 text-center md:text-left text-sm">
+        <div class="mt-6 flex flex-wrap justify-center md:justify-start gap-4 text-sm text-amber-200">
+          <a href={lang === 'es' ? '/tours' : '/en/tours'} class="hover:text-white underline">Tours</a>
+          <span>|</span>
+          <a href={lang === 'es' ? '/transporte-privado' : '/en/private-transportation'} class="hover:text-white underline">{lang === 'es' ? 'Transporte Privado' : 'Private Transportation'}</a>
+          <span>|</span>
+          <a href={lang === 'es' ? '/contact' : '/en/contact'} class="hover:text-white underline">{t.contact}</a>
+        </div>
+        <div class="mt-4 text-center md:text-left text-sm">
           <p>Puerto Jiménez, Península de Osa, Costa Rica</p>
         </div>
     </footer>

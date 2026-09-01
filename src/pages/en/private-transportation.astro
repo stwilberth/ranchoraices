@@ -1,0 +1,164 @@
+---
+import Layout from '../../components/Layout.astro';
+const lang = 'en';
+
+const jsonLd = [
+  {
+    '@type': 'Service',
+    '@id': 'https://ranchoraices.com/en/private-transportation#service',
+    name: 'Private Transportation in Costa Rica | Rancho Raíces & OSA Tours & Travel',
+    serviceType: 'Private Transportation',
+    provider: { '@id': 'https://ranchoraices.com/#organization' },
+    areaServed: { '@type': 'Country', name: 'Costa Rica' },
+    description: 'Private transportation in Costa Rica: airport transfers, hotel-to-hotel and long-distance private driver service for up to 8 passengers.',
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      priceCurrency: 'USD',
+    },
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': 'https://ranchoraices.com/en/private-transportation#faq',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What does private transportation include?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Private door-to-door transfers throughout Costa Rica: airports (SJO, Quepos, Golfito, Puerto Jiménez), hotels and long-distance journeys with a private driver and no fixed shuttle schedules.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'How many passengers can travel?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Up to 8 passengers comfortably, with space for luggage. Vehicle capacity may vary depending on amount and size of luggage.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I request a quote?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Send us pick-up location, destination, travel date, number of passengers and approximate luggage via WhatsApp at +506 8639 4010 for a personalized quote.' },
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  url={Astro.url}
+  title="Private Transportation in Costa Rica | Rancho Raíces"
+  description="Travel comfortably and privately across Costa Rica with a private driver. Airport transfers, hotel-to-hotel and long-distance trips. Up to 8 passengers. Get a quote on WhatsApp."
+  image="/og-image.jpg"
+  type="website"
+  jsonLd={jsonLd}
+>
+  <section class="bg-amber-900 text-amber-50 py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-amber-300 font-semibold tracking-widest uppercase text-sm mb-3">Private Service Throughout Costa Rica</p>
+      <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">Private Transportation in Costa Rica</h1>
+      <p class="text-xl text-amber-100 max-w-2xl mx-auto">Travel comfortably, privately and at your own pace.</p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://wa.me/50686394010?text=Hello%2C%20I%20would%20like%20a%20quote%20for%20private%20transportation%20in%20Costa%20Rica.%20My%20route%3A%20" target="_blank" rel="noopener" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-amber-400 text-amber-900 font-bold hover:bg-white transition"><i class="fab fa-whatsapp mr-2 text-xl"></i> Request a Private Transfer</a>
+        <a href="/en/tours" class="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-amber-200 text-amber-50 font-semibold hover:bg-amber-800 transition">View Tours</a>
+      </div>
+      <p class="mt-4 text-sm text-amber-200">Up to 8 passengers comfortably · Service throughout Costa Rica</p>
+    </div>
+  </section>
+
+  <section class="py-12 px-4 max-w-5xl mx-auto">
+    <div class="bg-white rounded-2xl shadow-lg border border-amber-200 p-6 md:p-8 mb-10">
+      <p class="text-lg text-gray-800 leading-relaxed">
+        From airport transfers and hotel-to-hotel transportation to long-distance journeys across Costa Rica, we offer <strong>private transportation designed around your itinerary</strong>.
+      </p>
+      <p class="text-gray-700 mt-4">
+        Whether you're arriving at the airport, moving between destinations or heading south to explore the Osa Peninsula, enjoy the convenience of traveling directly to where you need to go — without rental cars, complicated connections or fixed shuttle schedules.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-2 text-sm">
+        <span class="px-3 py-1 bg-amber-100 text-amber-900 rounded-full font-semibold">✓ Up to 8 passengers</span>
+        <span class="px-3 py-1 bg-amber-100 text-amber-900 rounded-full font-semibold">✓ Space for luggage</span>
+        <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full font-semibold">✓ Throughout Costa Rica</span>
+      </div>
+    </div>
+
+    <!-- Vehicle -->
+    <div class="grid md:grid-cols-2 gap-6 mb-12">
+      <div class="rounded-2xl overflow-hidden shadow-lg border border-amber-200 bg-white">
+        <img src="/images/private-transportation/Privatetransportation_2.jpeg" alt="Private van for transportation in Costa Rica - Villa Costa Pura Vida black van" class="w-full h-72 object-cover" loading="lazy" />
+        <div class="p-4">
+          <p class="font-semibold text-amber-900">Private Van · Up to 8 passengers</p>
+          <p class="text-sm text-gray-600">Comfortable vehicle with luggage space — ideal for families and groups. Door-to-door service.</p>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-lg border border-amber-200 bg-white">
+        <img src="/images/private-transportation/Privatetransportation_1.jpeg" alt="Eric Levasseur - Hotel Airport Hotel Transportation - Villa Costa Pura Vida" class="w-full h-72 object-cover" loading="lazy" />
+        <div class="p-4">
+          <p class="font-semibold text-amber-900">Eric Levasseur — Hotel - Airport - Hotel</p>
+          <p class="text-sm text-gray-600">Trilingual driver (FR/ES/EN) — private service at your pace. <span class="font-mono text-xs">WhatsApp 8709-1070 / 8639 4010</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-amber-50 rounded-xl p-6 border border-amber-200">
+        <div class="w-12 h-12 rounded-full bg-amber-900 text-white flex items-center justify-center mb-4"><i class="fas fa-plane"></i></div>
+        <h3 class="font-display text-xl text-amber-900 mb-2">Airport Transfers</h3>
+        <p class="text-gray-700 text-sm leading-relaxed">Start or finish your Costa Rica vacation without worrying about transportation. Private pick-up and drop-off can be arranged from international and domestic airports, including <strong>San José International Airport (SJO), as well as Quepos, Golfito, Puerto Jiménez</strong> and other locations. Your driver will take you directly to your hotel, vacation rental or next destination.</p>
+      </div>
+      <div class="bg-amber-50 rounded-xl p-6 border border-amber-200">
+        <div class="w-12 h-12 rounded-full bg-amber-900 text-white flex items-center justify-center mb-4"><i class="fas fa-hotel"></i></div>
+        <h3 class="font-display text-xl text-amber-900 mb-2">Hotel-to-Hotel & Long-Distance Transfers</h3>
+        <p class="text-gray-700 text-sm leading-relaxed">Traveling from one part of Costa Rica to another? Long-distance private transportation is available throughout the country, making it easy to connect destinations such as:</p>
+        <p class="text-xs text-gray-600 mt-2 leading-relaxed">San José · Manuel Antonio · Dominical · Uvita · Ojochal · Sierpe · Puerto Jiménez · Golfito · Pérez Zeledón · Guanacaste · Caribbean Coast · and beyond.<br/><em>Long journeys are welcome.</em> Instead of adapting your vacation to a shared shuttle schedule, your transportation is arranged around your itinerary.</p>
+      </div>
+      <div class="bg-amber-50 rounded-xl p-6 border border-amber-200">
+        <div class="w-12 h-12 rounded-full bg-amber-900 text-white flex items-center justify-center mb-4"><i class="fas fa-map-marked-alt"></i></div>
+        <h3 class="font-display text-xl text-amber-900 mb-2">Transportation for Tours & Experiences</h3>
+        <p class="text-gray-700 text-sm leading-relaxed">Already have an excursion planned? We can arrange transportation to tour departure points, marinas and other activities throughout the region — including connections for <strong>Corcovado National Park, Caño Island, Sierpe</strong> and other destinations.</p>
+        <p class="text-sm text-amber-800 mt-3 font-semibold">If you're booking an experience through OSA Tours & Travel, simply tell us where you're staying and we'll help determine the best transportation option.</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow border border-gray-200 p-6 md:p-8 mb-12">
+      <h2 class="font-display text-2xl md:text-3xl text-amber-900 mb-4">Meet Your Driver</h2>
+      <h3 class="text-xl font-bold text-gray-900">Eric Levasseur</h3>
+      <p class="text-gray-700 mt-3 leading-relaxed">
+        Originally from Québec and now calling Costa Rica home for almost 20 years, Eric offers friendly and personalized private transportation for travelers throughout the country.
+      </p>
+      <p class="text-gray-700 mt-3 leading-relaxed">
+        He speaks <strong>French and Spanish, as well as conversational English</strong>, making his service especially convenient for international travelers — and a wonderful option for French-speaking visitors who appreciate being able to communicate comfortably during their journey.
+      </p>
+      <p class="text-gray-700 mt-3 leading-relaxed">
+        Private transportation is about more than getting from point A to point B. It's the freedom to travel comfortably, ask questions, make necessary stops along the way and enjoy the scenery while someone else takes care of Costa Rica's roads.
+      </p>
+      <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+        <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Up to 8 passengers</div>
+        <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Space for luggage</div>
+        <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Airport transfers</div>
+        <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Hotel pick-up</div>
+        <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Local & long-distance</div>
+        <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Throughout Costa Rica</div>
+        <div class="flex items-center gap-2 col-span-2"><i class="fas fa-check text-green-600"></i> French · Spanish · English</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-4">Vehicle capacity may vary depending on the amount and size of luggage.</p>
+    </div>
+
+    <div class="bg-amber-900 rounded-2xl p-8 text-center text-amber-50">
+      <h2 class="font-display text-3xl mb-3">Where Can We Take You?</h2>
+      <p class="text-amber-100 text-lg mb-2">Anywhere in Costa Rica.</p>
+      <p class="text-amber-200 mb-6">Every trip is different, so transportation is quoted according to your route and travel needs. Send us your:</p>
+      <div class="flex flex-wrap justify-center gap-2 mb-8 text-sm font-semibold">
+        <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20">Pick-up location</span>
+        <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20">Destination</span>
+        <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20">Travel date</span>
+        <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20">Passengers</span>
+        <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20">Luggage</span>
+      </div>
+      <p class="text-amber-200 mb-6">Sit back, enjoy the journey and let us take care of the road.</p>
+      <a href="https://wa.me/50686394010?text=Hello%20Eric%2C%20I%20would%20like%20a%20quote%20for%20private%20transportation.%20%0APick-up%3A%20%0ADestination%3A%20%0ADate%3A%20%0APassengers%3A%20%0ALuggage%3A%20" target="_blank" rel="noopener" class="inline-flex items-center px-8 py-4 rounded-full bg-amber-400 text-amber-900 font-bold text-lg hover:bg-white transition">
+        <i class="fab fa-whatsapp mr-2 text-xl"></i> Request a Private Transfer
+      </a>
+      <p class="mt-4 text-xs text-amber-300">You can also email info@ranchoraices.com · Fast reply via WhatsApp</p>
+    </div>
+
+    <div class="mt-8 text-center text-sm text-gray-600">
+      <p>Service coordinated by <a href="https://www.osatoursandtravel.com/private-transportation" target="_blank" class="underline font-semibold">OSA Tours & Travel</a> and Rancho Raíces · Puerto Jiménez, Osa Peninsula</p>
+    </div>
+  </section>
+</Layout>

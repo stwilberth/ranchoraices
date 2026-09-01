@@ -75,6 +75,14 @@ const jsonLd = [
           text: 'Incluye entrada al Parque Nacional Corcovado, transporte de Puerto Jiménez a Sirena, guía certificado y almuerzo. Dura de 6 a 8 horas y cuesta $95 USD por persona.',
         },
       },
+        {
+          '@type': 'Question',
+          name: '¿El transporte está incluido en el Tour de Cacao?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'El transporte no está incluido. Ofrecemos servicio de taxi opcional (solo ida, un trayecto — no ida y vuelta): $25 USD por vía desde el centro de Puerto Jiménez y $30 USD por vía desde Hotel Botánica. Ida y vuelta sería $50 / $60 respectivamente. Otras ubicaciones varían según la distancia. Precio por servicio de taxi (un trayecto), no por persona.',
+          },
+        },
       {
         '@type': 'Question',
         name: '¿Cómo puedo reservar un tour?',
@@ -107,6 +115,9 @@ const jsonLd = [
           <li>Precio: $45 USD por persona</li>
           <li>Incluye recorrido, degustaciones, actividades prácticas</li>
         </ul>
+        <p class="mt-3 text-sm text-gray-600 bg-white rounded-lg p-3 border border-amber-200">
+          <span class="font-semibold text-amber-900">Transporte no incluido:</span> servicio de taxi opcional <span class="font-semibold">$25 USD por vía (solo ida)</span> desde el centro de Puerto Jiménez y <span class="font-semibold">$30 USD por vía (solo ida)</span> desde Hotel Botánica. <span class="text-xs">Un trayecto — no ida y vuelta. Ida y vuelta: $50 / $60.</span> Otras ubicaciones: tarifa según distancia. Precio por servicio de taxi (no por persona).
+        </p>
         <a href="/contact" class="inline-block mt-2 px-6 py-2 rounded bg-amber-400 text-amber-900 font-semibold hover:bg-green-600 hover:text-white transition">Reservar</a>
       </div>
       <div class="bg-amber-50 rounded-xl shadow p-6 border border-amber-300">
@@ -146,6 +157,10 @@ const jsonLd = [
         <div class="bg-amber-50 rounded-xl shadow p-6">
           <h3 class="font-semibold text-amber-900 mb-2">¿Qué incluye el tour de día completo a Corcovado?</h3>
           <p class="text-gray-700">Incluye entrada al Parque Nacional Corcovado, transporte de Puerto Jiménez a Sirena, guía certificado y almuerzo. Dura de 6 a 8 horas y cuesta $95 USD por persona.</p>
+        </div>
+        <div class="bg-amber-50 rounded-xl shadow p-6">
+          <h3 class="font-semibold text-amber-900 mb-2">¿El transporte está incluido en el Tour de Cacao?</h3>
+          <p class="text-gray-700">No, el transporte no está incluido. Ofrecemos servicio de taxi opcional <strong>por vía (solo ida, un trayecto — no ida y vuelta)</strong>: <strong>$25 USD solo ida</strong> desde el centro de Puerto Jiménez y <strong>$30 USD solo ida</strong> desde Hotel Botánica (ida y vuelta $50 / $60). Otras ubicaciones varían según la distancia. Precio por servicio de taxi, no por persona.</p>
         </div>
         <div class="bg-amber-50 rounded-xl shadow p-6">
           <h3 class="font-semibold text-amber-900 mb-2">¿Cómo puedo reservar un tour?</h3>
